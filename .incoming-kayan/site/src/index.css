@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "IBM Plex Sans Arabic", sans-serif;
+  --font-body: "IBM Plex Sans Arabic", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --color-ink: #0a0e14;
+  --color-surface: #121821;
+  --color-surface-2: #1a222e;
+  --color-line: #232c39;
+  --color-text: #e7ecf2;
+  --color-muted: #8b97a6;
+  --color-amber: #e8a33d;
+  --color-amber-dim: #a9762c;
+  --color-steel: #4f8ec2;
+  --color-green: #4fbf8b;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-amber);
+  color: var(--color-ink);
+}
+
+/* blueprint grid background */
+.blueprint-grid {
+  background-image:
+    linear-gradient(to bottom, rgba(232, 163, 61, 0.06) 1px, transparent 1px),
+    linear-gradient(to right, rgba(232, 163, 61, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.blueprint-grid-fine {
+  background-image:
+    linear-gradient(to bottom, rgba(232, 163, 61, 0.045) 1px, transparent 1px),
+    linear-gradient(to right, rgba(232, 163, 61, 0.045) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-ink); }
+::-webkit-scrollbar-thumb { background: var(--color-surface-2); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-amber-dim); }
+
+.ltr-code {
+  direction: ltr;
+  text-align: left;
+  font-family: var(--font-mono);
+}
