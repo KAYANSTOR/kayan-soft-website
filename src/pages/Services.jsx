@@ -1,19 +1,20 @@
 import { motion } from "framer-motion"
-import { Smartphone, Globe, Server, Compass, Palette, LifeBuoy } from "lucide-react"
+import { Compass, Palette, LifeBuoy } from "lucide-react"
+import { AppIcon, WebIcon, SystemIcon } from "../components/icons/ServiceIcons"
 
 const services = [
   {
-    icon: Smartphone,
+    icon: AppIcon,
     title: "تطبيقات جوال",
     desc: "تطبيقات iOS و Android أصلية أو متعددة المنصات، من الفكرة حتى النشر على المتاجر.",
   },
   {
-    icon: Globe,
+    icon: WebIcon,
     title: "مواقع ويب",
     desc: "مواقع تعريفية وتجارية سريعة التحميل، متجاوبة بالكامل، ومبنية لمحركات البحث.",
   },
   {
-    icon: Server,
+    icon: SystemIcon,
     title: "أنظمة مخصصة",
     desc: "أنظمة داخلية (CRM، مخزون، محاسبة...) تُبنى حول طريقة عمل فريقك تحديدًا.",
   },
@@ -46,7 +47,7 @@ export default function Services() {
     <div className="pt-32 pb-24 max-w-6xl mx-auto px-5 md:px-8">
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
         <span className="text-xs text-amber ltr-code">// services</span>
-        <h1 className="text-3xl md:text-4xl font-bold mt-2">خدماتنا</h1>
+        <h1 className="font-display text-3xl md:text-4xl font-bold mt-2">خدماتنا</h1>
         <p className="text-muted mt-3 max-w-lg leading-7">
           نغطي دورة المشروع البرمجي كاملة، من التصميم إلى التطوير والدعم بعد الإطلاق.
         </p>
@@ -70,7 +71,7 @@ export default function Services() {
       </div>
 
       <div className="mt-24">
-        <h2 className="text-2xl font-bold mb-8">كيف نعمل</h2>
+        <h2 className="font-display text-2xl font-bold mb-8">كيف نعمل</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {steps.map((s, i) => (
             <motion.div

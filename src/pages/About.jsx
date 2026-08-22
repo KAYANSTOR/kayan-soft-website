@@ -12,7 +12,7 @@ export default function About() {
     <div className="pt-32 pb-24 max-w-6xl mx-auto px-5 md:px-8">
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="max-w-2xl">
         <span className="text-xs text-amber ltr-code">// about</span>
-        <h1 className="text-3xl md:text-4xl font-bold mt-2">من نحن</h1>
+        <h1 className="font-display text-3xl md:text-4xl font-bold mt-2">من نحن</h1>
         <p className="text-muted mt-4 leading-8">
           كيان سوفت بيت برمجي صغير متخصص في بناء تطبيقات ومواقع وأنظمة مخصصة. اسمنا مأخوذ من كلمة "كيان" —
           لأننا نؤمن أن كل مشروع برمجي جيد يجب أن يكون كيانًا متكاملًا له هوية وهيكل واضح، لا مجرد شاشات
@@ -42,9 +42,9 @@ export default function About() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="mt-20 rounded-3xl border border-line bg-surface blueprint-grid-fine p-10 md:p-14"
+        className="mt-20 rounded-3xl border border-line bg-surface blueprint-grid-fine p-10 md:p-14 glow-amber"
       >
-        <h2 className="text-2xl font-bold">بالأرقام</h2>
+        <h2 className="font-display text-2xl font-bold">بالأرقام</h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-8">
           {[
             { n: "+8", l: "مشاريع منجزة" },

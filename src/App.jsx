@@ -2,20 +2,26 @@ import { Routes, Route, useLocation } from "react-router-dom"
 import { useEffect } from "react"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
+import FloatingWhatsApp from "./components/FloatingWhatsApp"
 import Home from "./pages/Home"
 import Portfolio from "./pages/Portfolio"
 import ProjectDetail from "./pages/ProjectDetail"
 import Services from "./pages/Services"
 import About from "./pages/About"
 import Contact from "./pages/Contact"
+import RequestProject from "./pages/RequestProject"
 
 function ScrollToTop() {
   const { pathname } = useLocation()
-  useEffect(() => window.scrollTo(0, 0), [pathname])
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
   return null
 }
 
 export default function App() {
+  const { pathname } = useLocation()
+
   return (
     <div className="min-h-screen flex flex-col">
       <ScrollToTop />
@@ -28,9 +34,11 @@ export default function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/request" element={<RequestProject />} />
         </Routes>
       </main>
       <Footer />
+      {pathname !== "/request" && <FloatingWhatsApp />}
     </div>
   )
 }

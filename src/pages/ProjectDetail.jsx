@@ -33,7 +33,7 @@ export default function ProjectDetail() {
           </span>
           <span className="flex items-center gap-1"><Calendar size={13} /> {project.year}</span>
         </div>
-        <h1 className="text-3xl md:text-4xl font-bold mt-4">{project.title}</h1>
+        <h1 className="font-display text-3xl md:text-4xl font-bold mt-4">{project.title}</h1>
         <p className="text-muted mt-3 max-w-xl leading-7">{project.summary}</p>
       </motion.div>
 
@@ -65,7 +65,7 @@ export default function ProjectDetail() {
 
       {related.length > 0 && (
         <div className="mt-24">
-          <h2 className="text-xl font-bold mb-6">مشاريع مشابهة</h2>
+          <h2 className="font-display text-xl font-bold mb-6">مشاريع مشابهة</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {related.map((p, i) => (
               <ProjectCard key={p.id} project={p} index={i} />
