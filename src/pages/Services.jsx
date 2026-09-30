@@ -1,94 +1,115 @@
-import { motion } from "framer-motion"
-import { Compass, Palette, LifeBuoy } from "lucide-react"
-import { AppIcon, WebIcon, SystemIcon } from "../components/icons/ServiceIcons"
+import { motion } from "framer-motion";
+import { Compass, Palette, LifeBuoy, Smartphone, Globe, Server } from "lucide-react";
 
 const services = [
   {
-    icon: AppIcon,
+    icon: Smartphone,
     title: "تطبيقات جوال",
-    desc: "تطبيقات iOS و Android أصلية أو متعددة المنصات، من الفكرة حتى النشر على المتاجر.",
+    desc: "تطبيقات iOS و Android أصلية أو متعددة المنصات، بتجربة مستخدم مذهلة من الفكرة حتى النشر على المتاجر.",
+    color: "from-fuchsia-500 to-rose-500"
   },
   {
-    icon: WebIcon,
+    icon: Globe,
     title: "مواقع ويب",
-    desc: "مواقع تعريفية وتجارية سريعة التحميل، متجاوبة بالكامل، ومبنية لمحركات البحث.",
+    desc: "مواقع تعريفية وتجارية فائقة السرعة، متجاوبة بالكامل، ومبنية لمحركات البحث باستخدام أحدث التقنيات.",
+    color: "from-cyan-400 to-blue-600"
   },
   {
-    icon: SystemIcon,
+    icon: Server,
     title: "أنظمة مخصصة",
-    desc: "أنظمة داخلية (CRM، مخزون، محاسبة...) تُبنى حول طريقة عمل فريقك تحديدًا.",
+    desc: "أنظمة داخلية (CRM، مخزون، سحابية) تُبنى خصيصاً لتواكب طريقة عمل فريقك تحديداً بدقة متناهية.",
+    color: "from-violet-500 to-purple-700"
   },
   {
     icon: Compass,
     title: "استشارات تقنية",
-    desc: "مراجعة فكرة مشروعك واقتراح المسار التقني الأنسب قبل البدء بالتنفيذ.",
+    desc: "مراجعة فكرة مشروعك واقتراح المسار التقني الأنسب والأكثر أماناً قبل البدء بالتنفيذ وإهدار الموارد.",
+    color: "from-amber-400 to-orange-500"
   },
   {
     icon: Palette,
     title: "تصميم واجهات (UI/UX)",
-    desc: "تصميم تجربة استخدام واضحة، مبنية على هوية بصرية خاصة بمشروعك.",
+    desc: "تصميم تجربة استخدام واضحة ومبهرة، مبنية على هوية بصرية خاصة بمشروعك تجذب العملاء.",
+    color: "from-emerald-400 to-teal-500"
   },
   {
     icon: LifeBuoy,
     title: "صيانة ودعم",
-    desc: "متابعة ما بعد الإطلاق: تحديثات، إصلاح أعطال، وتطوير ميزات جديدة تدريجيًا.",
+    desc: "متابعة مستمرة ما بعد الإطلاق: تحديثات أمنية، إصلاح أعطال، وتطوير ميزات جديدة تدريجياً بثقة.",
+    color: "from-blue-400 to-indigo-500"
   },
-]
+];
 
 const steps = [
-  { title: "الاستكشاف", desc: "جلسة تعريفية نفهم فيها هدف مشروعك والمستخدمين المستهدفين." },
-  { title: "التخطيط", desc: "مخطط تقني وتصميمي واضح، مع جدول زمني وتكلفة تقديرية." },
-  { title: "البناء", desc: "تطوير على مراحل قابلة للمراجعة، مع تحديثات دورية معك." },
-  { title: "الإطلاق والمتابعة", desc: "نشر المشروع، ثم دعم ومتابعة بعد الإطلاق مباشرة." },
-]
+  { title: "الاستكشاف", desc: "جلسة عصف ذهني معمقة نفهم فيها هدف مشروعك الاستراتيجي والمستخدمين المستهدفين بدقة." },
+  { title: "التخطيط", desc: "مخطط تقني وتصميمي شامل، مع جدول زمني دقيق وتكلفة تقديرية شفافة تماماً." },
+  { title: "البناء والتطوير", desc: "تطوير تفاعلي على مراحل قابلة للمراجعة، لتبقى على اطلاع تام بتقدم مشروعك." },
+  { title: "الإطلاق والمتابعة", desc: "نشر المشروع بأعلى معايير الجودة، ثم دعم فني متواصل لضمان استقرار النظام." },
+];
 
 export default function Services() {
   return (
-    <div className="pt-32 pb-24 max-w-6xl mx-auto px-5 md:px-8">
-      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-        <span className="text-xs text-amber ltr-code">// services</span>
-        <h1 className="font-display text-3xl md:text-4xl font-bold mt-2">خدماتنا</h1>
-        <p className="text-muted mt-3 max-w-lg leading-7">
-          نغطي دورة المشروع البرمجي كاملة، من التصميم إلى التطوير والدعم بعد الإطلاق.
-        </p>
-      </motion.div>
+    <div dir="rtl" className="min-h-screen pt-32 pb-24 px-6 relative overflow-hidden bg-[#030309] text-white">
+      {/* Background Gradients */}
+      <div className="fixed inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
+      <div className="absolute top-[20%] left-[10%] w-[40vw] h-[40vw] bg-fuchsia-900/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
+      
+      <div className="max-w-6xl mx-auto relative z-10">
+        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center mb-16">
+          <span className="inline-block glass-panel px-4 py-1.5 rounded-full text-fuchsia-400 text-sm font-bold tracking-widest uppercase mb-4 shadow-glow shadow-fuchsia-500/20">
+            ماذا نقدم
+          </span>
+          <h1 className="text-5xl md:text-7xl font-black mb-6">
+            خدماتنا <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-cyan-400">الرقمية</span>
+          </h1>
+          <p className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed">
+            نغطي دورة حياة المشروع البرمجي بالكامل، من رسم الفكرة المبدئية إلى التطوير المعقد وحتى الدعم الفني بعد الإطلاق المدوّي.
+          </p>
+        </motion.div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
-        {services.map(({ icon: Icon, title, desc }, i) => (
-          <motion.div
-            key={title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.45, delay: (i % 6) * 0.06 }}
-            className="rounded-2xl border border-line bg-surface p-6 hover:border-amber-dim transition-colors"
-          >
-            <Icon size={22} className="text-amber" />
-            <h3 className="font-semibold mt-4">{title}</h3>
-            <p className="text-sm text-muted mt-2 leading-6">{desc}</p>
-          </motion.div>
-        ))}
-      </div>
-
-      <div className="mt-24">
-        <h2 className="font-display text-2xl font-bold mb-8">كيف نعمل</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {steps.map((s, i) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map(({ icon: Icon, title, desc, color }, i) => (
             <motion.div
-              key={s.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="relative rounded-2xl border border-line bg-surface p-6"
+              key={title}
+              initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="glass-panel rounded-3xl p-8 relative overflow-hidden group hover:bg-white/[0.04] transition-colors duration-300 shadow-lg"
             >
-              <span className="ltr-code text-xs text-amber-dim">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="font-semibold mt-3">{s.title}</h3>
-              <p className="text-sm text-muted mt-2 leading-6">{s.desc}</p>
+              <div className={`absolute -left-10 -top-10 w-32 h-32 bg-gradient-to-br ${color} rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none`} />
+              <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center mb-6 shadow-lg`}>
+                <Icon size={24} className="text-white" />
+              </div>
+              <h3 className="font-black text-2xl mb-3">{title}</h3>
+              <p className="text-base text-white/60 leading-relaxed">{desc}</p>
             </motion.div>
           ))}
         </div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+          className="mt-32"
+        >
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-black mb-4">آلية <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">العمل</span></h2>
+            <p className="text-white/50">خطوات واضحة ومدروسة لضمان نجاح مشروعك من الصفر.</p>
+          </div>
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {steps.map((s, i) => (
+              <motion.div
+                key={s.title}
+                initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }}
+                className="relative glass-panel rounded-3xl p-8 border-t-2 border-t-cyan-500/30"
+              >
+                <div className="absolute -top-5 right-8 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-black text-xl w-10 h-10 rounded-full flex items-center justify-center shadow-lg shadow-cyan-500/30">
+                  {i + 1}
+                </div>
+                <h3 className="font-black text-xl mt-4 mb-3">{s.title}</h3>
+                <p className="text-sm text-white/60 leading-relaxed">{s.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </div>
-  )
+  );
 }
