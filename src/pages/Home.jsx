@@ -54,7 +54,7 @@ export default function Home() {
   const navigate = useNavigate();
   
   // Parallax Values - Optimized mapping
-  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const yWork = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
   const yText = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
   const opacityHero = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
@@ -200,7 +200,7 @@ export default function Home() {
               className={`flex flex-col ${work.align} group cursor-pointer`}
             >
               <div className="relative w-full lg:w-[80%] h-[400px] md:h-[500px] rounded-[2rem] overflow-hidden bg-white/5">
-                <motion.div className="w-full h-[120%] -top-[10%] will-change-transform" style={{ y: useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]) }}>
+                <motion.div className="w-full h-[120%] -top-[10%] will-change-transform" style={{ y: yWork }}>
                   <img src={work.img} loading="lazy" className="w-full h-full object-cover filter brightness-75 group-hover:brightness-100 transition-all duration-500" alt={work.title} />
                 </motion.div>
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">

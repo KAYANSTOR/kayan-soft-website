@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /request
+Disallow: /api/
+
+Sitemap: https://ye.kayan-soft.online/sitemap.xml
+Host: https://ye.kayan-soft.online

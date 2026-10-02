@@ -1,6 +1,24 @@
 # كيان سوفت — Kayan Soft
 
-موقع الشركة (React + Vite + Tailwind CSS v4 + Framer Motion).
+موقع الشركة (React + Vite + Tailwind CSS v4 + Framer Motion) على النطاق الإنتاجي: https://ye.kayan-soft.online
+
+## SEO المطبق
+
+- عناوين ووصف وكلمات مفتاحية وcanonical وOpen Graph وTwitter Card لكل مسار.
+- بيانات منظمة Schema.org للمنظمة وBreadcrumbList.
+- `public/sitemap.xml` للمسارات العامة و`public/robots.txt` مع استبعاد نموذج الطلب.
+- إعادة كتابة Vercel للمسارات الداخلية حتى تعمل الزيارات المباشرة والروابط العميقة.
+- صفحة 404 واضحة بدلاً من soft-404.
+- Vercel Analytics مضمّن في التطبيق؛ يجب تفعيل Analytics من لوحة Vercel للمشروع.
+
+## Google Search Console
+
+1. أضف النطاق `ye.kayan-soft.online` في Google Search Console.
+2. أرسل: `https://ye.kayan-soft.online/sitemap.xml`.
+3. اطلب فحص الصفحة الرئيسية والصفحات الخدمية بعد النشر.
+4. أضف رابط الموقع في Google Business Profile إن كان للشركة ملف نشاط محلي.
+
+لا توجد طريقة مضمونة لجعل الموقع أول نتيجة؛ الترتيب يعتمد على المنافسة، جودة المحتوى، الروابط، الإشارات المحلية، وسرعة اكتشاف جوجل للموقع. لا تستخدم حشو الكلمات أو روابط مدفوعة مخالفة.
 
 ## التشغيل محليًا
 
