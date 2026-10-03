@@ -3,5 +3,10 @@ Allow: /
 Disallow: /request
 Disallow: /api/
 
+User-agent: Google-Extended
+Allow: /
+Disallow: /request
+Disallow: /api/
+
 Sitemap: https://ye.kayan-soft.online/sitemap.xml
 Host: https://ye.kayan-soft.online

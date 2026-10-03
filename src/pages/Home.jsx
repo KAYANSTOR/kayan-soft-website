@@ -121,7 +121,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-white/50 max-w-2xl leading-relaxed mb-10 font-light"
           >
-            نحن لا نكتب أكواداً فحسب، بل نصنع تجارب رقمية تأسر القلوب وترفع من قيمة علامتك التجارية في السوق.
+            كيان سوفت شركة برمجة في اليمن وصنعاء، نطوّر تطبيقات الجوال، نصمم منصات الويب، ونبني أنظمة الشركات والمتاجر الرقمية من الفكرة حتى الإطلاق.
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} className="flex gap-4">

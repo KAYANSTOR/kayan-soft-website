@@ -125,6 +125,7 @@ export default function SEO({ project }) {
       email: "hello@kayan-soft.online",
       telephone: "+967773303455",
       areaServed: "YE",
+      address: { "@type": "PostalAddress", addressLocality: "صنعاء", addressCountry: "YE" },
       contactPoint: { "@type": "ContactPoint", telephone: "+967773303455", contactType: "customer service", availableLanguage: ["ar", "en"] },
     });
     setJsonLd("breadcrumb", {

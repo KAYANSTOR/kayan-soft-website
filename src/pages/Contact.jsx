@@ -123,7 +123,7 @@ export default function Contact() {
             </a>
             
             <InfoRow icon={Mail} title="البريد الإلكتروني" value="hello@kayan-soft.online" color="from-cyan-400 to-blue-500" />
-            <InfoRow icon={MapPin} title="الموقع" value="الجمهورية اليمنية — فريق رقمي متكامل" color="from-fuchsia-500 to-rose-500" />
+            <InfoRow icon={MapPin} title="الموقع" value="صنعاء، الجمهورية اليمنية — فريق رقمي متكامل" color="from-fuchsia-500 to-rose-500" />
             
             <div className="glass-panel p-8 rounded-3xl mt-8 bg-gradient-to-br from-white/5 to-transparent border-white/5">
               <h3 className="font-bold text-xl mb-4">أوقات العمل</h3>
