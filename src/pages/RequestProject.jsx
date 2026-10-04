@@ -3,8 +3,7 @@ import { motion } from "framer-motion";
 import { Send, Smartphone, Globe, Server, HelpCircle, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import MagneticButton from "../components/MagneticButton";
-
-const WHATSAPP_NUMBER = "967773303455";
+import { openWhatsApp } from "../data/contact";
 
 const projectTypeOptions = [
   { id: "app", label: "تطبيق جوال", icon: Smartphone },
@@ -53,7 +52,7 @@ export default function RequestProject() {
       details,
     ].join("\n");
 
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    openWhatsApp(message);
     setOpened(true);
   };
 
@@ -94,6 +93,7 @@ export default function RequestProject() {
                 <input
                   value={name} onChange={(e) => setName(e.target.value)}
                   placeholder="محمد أحمد"
+                  autoComplete="name"
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-cyan-400 focus:bg-white/10 transition-all"
                 />
                 {errors.name && <p className="text-xs text-rose-400 mt-2">{errors.name}</p>}
@@ -103,6 +103,7 @@ export default function RequestProject() {
                 <input
                   value={contact} onChange={(e) => setContact(e.target.value)}
                   placeholder="+967 77X XXX XXX"
+                  autoComplete="tel"
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-cyan-400 focus:bg-white/10 transition-all"
                 />
                 {errors.contact && <p className="text-xs text-rose-400 mt-2">{errors.contact}</p>}
