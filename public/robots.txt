@@ -1,27 +1,21 @@
 User-agent: *
 Allow: /
-Disallow: /request
 Disallow: /api/
 
 User-agent: Google-Extended
 Allow: /
-Disallow: /request
 Disallow: /api/
 
 User-agent: OAI-SearchBot
 Allow: /
-Disallow: /request
 Disallow: /api/
 
 User-agent: ClaudeBot
 Allow: /
-Disallow: /request
 Disallow: /api/
 
 User-agent: PerplexityBot
 Allow: /
-Disallow: /request
 Disallow: /api/
 
 Sitemap: https://kayan-soft.online/sitemap.xml
-Host: https://kayan-soft.online

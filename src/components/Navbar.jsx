@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import MagneticButton from "./MagneticButton";
 
 const NAV_ITEMS = [
@@ -16,8 +16,6 @@ export default function Navbar() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
-
-  useEffect(() => setOpen(false), [pathname]);
 
   return (
     <motion.nav initial={{ y: -24, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.45, ease: "easeOut" }} className="fixed inset-x-0 top-4 z-50 px-4 sm:px-6 lg:top-5">
@@ -59,12 +57,12 @@ export default function Navbar() {
             {NAV_ITEMS.map((item) => {
               const active = pathname === item.path || (item.path !== "/" && pathname.startsWith(item.path));
               const linkClass = "rounded-2xl px-4 py-3 text-sm font-medium transition " + (active ? "bg-amber/10 text-amber-2" : "text-muted hover:bg-surface-2 hover:text-text");
-              return <Link key={item.path} to={item.path} className={linkClass}>{item.name}</Link>;
+              return <Link key={item.path} to={item.path} onClick={() => setOpen(false)} className={linkClass}>{item.name}</Link>;
             })}
           </div>
           <div className="mt-2 grid gap-2 border-t border-line pt-3">
-            <MagneticButton onClick={() => navigate("/request")} className="btn-primary inline-flex min-h-11 items-center justify-center rounded-2xl text-sm">اطلب مشروعك</MagneticButton>
-            <Link to="/contact" className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-line text-sm font-medium text-text transition hover:border-amber-dim hover:text-amber-2">تواصل معنا</Link>
+            <MagneticButton onClick={() => { setOpen(false); navigate("/request"); }} className="btn-primary inline-flex min-h-11 items-center justify-center rounded-2xl text-sm">اطلب مشروعك</MagneticButton>
+            <Link to="/contact" onClick={() => setOpen(false)} className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-line text-sm font-medium text-text transition hover:border-amber-dim hover:text-amber-2">تواصل معنا</Link>
           </div>
         </div>
       )}
