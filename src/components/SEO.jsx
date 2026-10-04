@@ -43,6 +43,12 @@ const routeMetadata = {
     keywords: "طلب مشروع برمجي, تكلفة تطبيق, تطوير موقع, شركة برمجة اليمن",
     type: "website",
   },
+  "/about-kayan-soft-yemen": {
+    title: "كيان سوفت في اليمن | شركة برمجيات وحلول رقمية",
+    description: "الصفحة الرسمية لكيان سوفت اليمنية: شركة برمجيات في صنعاء لتطوير المواقع وتطبيقات الجوال والأنظمة والحلول الرقمية.",
+    keywords: "كيان سوفت اليمن, شركة برمجيات صنعاء, شركة برمجة يمنية, تطوير مواقع اليمن, تطوير تطبيقات اليمن",
+    type: "website",
+  },
 };
 
 function setMeta(attribute, key, content) {
@@ -68,6 +74,10 @@ function setLink(rel, href) {
 
 function setJsonLd(id, data) {
   let script = document.head.querySelector(`script[data-seo="${id}"]`);
+  if (!data) {
+    script?.remove();
+    return;
+  }
   if (!script) {
     script = document.createElement("script");
     script.type = "application/ld+json";
@@ -119,15 +129,36 @@ export default function SEO({ project }) {
     setJsonLd("organization", {
       "@context": "https://schema.org",
       "@type": "Organization",
-      name: SITE_NAME,
+      name: "كيان سوفت",
+      alternateName: ["Kayan Soft", "كيان سوفت اليمن"],
       url: SITE_URL,
       logo: DEFAULT_IMAGE,
+      description: "شركة برمجيات يمنية متخصصة في تطوير المواقع والتطبيقات والأنظمة والحلول الرقمية.",
       email: "hello@kayan-soft.online",
       telephone: "+967773303455",
       areaServed: "YE",
       address: { "@type": "PostalAddress", addressLocality: "صنعاء", addressCountry: "YE" },
       contactPoint: { "@type": "ContactPoint", telephone: "+967773303455", contactType: "customer service", availableLanguage: ["ar", "en"] },
     });
+    setJsonLd("website", {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "كيان سوفت",
+      alternateName: ["Kayan Soft", "كيان سوفت اليمن", "كيان سوف"],
+      url: `${SITE_URL}/`,
+      inLanguage: "ar",
+    });
+    if (basePath === "/about-kayan-soft-yemen") {
+      setJsonLd("faq", {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          ["ما هي كيان سوفت؟", "كيان سوفت شركة برمجيات وتطوير حلول رقمية في اليمن، متخصصة في بناء المواقع وتطبيقات الجوال والأنظمة المخصصة."],
+          ["أين تقع كيان سوفت؟", "تعمل كيان سوفت من صنعاء، الجمهورية اليمنية، وتقدم خدماتها الرقمية للجهات والعملاء داخل اليمن وخارجه."],
+          ["ما خدمات كيان سوفت؟", "تشمل الخدمات تطوير تطبيقات iOS وAndroid، تصميم مواقع الويب، بناء الأنظمة المخصصة وCRM، تصميم UI/UX، والاستشارات والصيانة."],
+        ].map(([name, text]) => ({ "@type": "Question", name, acceptedAnswer: { "@type": "Answer", text } })),
+      });
+    } else setJsonLd("faq", null);
     setJsonLd("breadcrumb", {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",

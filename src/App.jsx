@@ -13,6 +13,7 @@ const Services = lazy(() => import("./pages/Services"))
 const About = lazy(() => import("./pages/About"))
 const Contact = lazy(() => import("./pages/Contact"))
 const RequestProject = lazy(() => import("./pages/RequestProject"))
+const KayanSoftYemen = lazy(() => import("./pages/KayanSoftYemen"))
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -51,6 +52,7 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/request" element={<RequestProject />} />
+            <Route path="/about-kayan-soft-yemen" element={<KayanSoftYemen />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
