@@ -75,7 +75,7 @@ export default function Portfolio() {
                   <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden glass-panel mb-6">
                     {/* Img Fallback if p.image is missing, we use a cool gradient */}
                     {p.image ? (
-                      <img src={p.image} alt={`${p.title} — مشروع ${p.category === "app" ? "تطبيق جوال" : p.category === "web" ? "موقع ويب" : "نظام مخصص"} من كيان سوفت`} width="1200" height="800" loading="lazy" decoding="async" className="w-full h-full object-cover filter brightness-75 group-hover:brightness-110 group-hover:scale-105 transition-all duration-700" />
+                      <img src={p.image} alt={p.title} className="w-full h-full object-cover filter brightness-75 group-hover:brightness-110 group-hover:scale-105 transition-all duration-700" />
                     ) : (
                       <div className="w-full h-full bg-gradient-to-br from-white/5 to-white/10 flex items-center justify-center group-hover:scale-105 transition-all duration-700">
                         <span className="font-black text-6xl text-white/5">{p.title.charAt(0)}</span>
@@ -97,7 +97,7 @@ export default function Portfolio() {
                         {categories.find(c => c.id === p.category)?.label || "مشاريع"}
                       </span>
                     </div>
-                    <p className="text-white/50 text-sm line-clamp-2">{p.summary}</p>
+                    <p className="text-white/50 text-sm line-clamp-2">{p.desc}</p>
                   </div>
                 </Link>
               </motion.div>

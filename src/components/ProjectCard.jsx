@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
 import { ArrowUpLeft } from "lucide-react"
+import ProjectThumb from "./ProjectThumb"
 
 const categoryLabel = { app: "تطبيق", web: "موقع ويب", system: "نظام" }
 
@@ -17,14 +18,10 @@ export default function ProjectCard({ project, index = 0 }) {
         className="group block rounded-2xl border border-line bg-surface overflow-hidden hover:border-amber-dim transition-colors"
       >
         <div className="relative overflow-hidden">
-          <img
-            src={project.image}
-            alt={`${project.title} — مشروع برمجي من كيان سوفت`}
-            width="1200"
-            height="800"
-            loading="lazy"
-            decoding="async"
-            className="w-full h-40 md:h-44 object-cover transition-transform duration-500 group-hover:scale-[1.06]"
+          <ProjectThumb
+            color={project.thumbColor}
+            shape={project.thumbShape}
+            className="w-full h-40 md:h-44 transition-transform duration-500 group-hover:scale-[1.06]"
           />
           <span className="absolute top-3 right-3 text-[11px] px-2.5 py-1 rounded-full bg-ink/70 backdrop-blur border border-line text-muted">
             {categoryLabel[project.category]}
