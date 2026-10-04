@@ -1,36 +1,41 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
-import { Smartphone, Monitor, Layers, Sparkles } from "lucide-react";
+import { Smartphone, Monitor, Layers, Sparkles, ArrowLeft, CheckCircle2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import MagneticButton from "../components/MagneticButton";
 
-// --- Optimized 3D Tilt Card Component ---
-const TiltCard = ({ children, className }) => {
+const SERVICES = [
+  { icon: Smartphone, title: "تطبيقات الهواتف الذكية", desc: "تجارب جوال سريعة وموثوقة على iOS وAndroid، من واجهة المستخدم حتى البنية الخلفية." },
+  { icon: Monitor, title: "منصات الويب", desc: "منصات ومواقع احترافية قابلة للتوسع، مصممة لتخدم العملاء وتدعم نمو أعمالك." },
+  { icon: Layers, title: "أنظمة الشركات", desc: "أنظمة إدارة وERP وحلول داخلية توحّد العمليات والبيانات في تجربة واحدة واضحة." },
+];
+
+const WORKS = [
+  { img: "/projects/orbit-pay.webp", title: "تطبيق بنكي لامركزي", cat: "Fintech App", align: "items-start" },
+  { img: "/projects/hive-crm.webp", title: "نظام تحليلات وإدارة", cat: "Business Platform", align: "items-end" },
+  { img: "/projects/atlas-menu.webp", title: "منصة تجارة إلكترونية", cat: "E-Commerce", align: "items-start" },
+];
+
+function TiltCard({ children, className = "" }) {
   const ref = useRef(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+  const rotateX = useTransform(mouseY, [-0.5, 0.5], [6, -6]);
+  const rotateY = useTransform(mouseX, [-0.5, 0.5], [-6, 6]);
+  const springRotateX = useSpring(rotateX, { stiffness: 260, damping: 28 });
+  const springRotateY = useSpring(rotateY, { stiffness: 260, damping: 28 });
 
-  const rotateX = useTransform(mouseY, [-0.5, 0.5], [10, -10]);
-  const rotateY = useTransform(mouseX, [-0.5, 0.5], [-10, 10]);
-
-  const springRotateX = useSpring(rotateX, { stiffness: 300, damping: 30 });
-  const springRotateY = useSpring(rotateY, { stiffness: 300, damping: 30 });
-
-  const handleMouseMove = (e) => {
+  function handleMouseMove(event) {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const clientX = e.clientX - rect.left;
-    const clientY = e.clientY - rect.top;
-    mouseX.set(clientX / width - 0.5);
-    mouseY.set(clientY / height - 0.5);
-  };
+    mouseX.set((event.clientX - rect.left) / rect.width - 0.5);
+    mouseY.set((event.clientY - rect.top) / rect.height - 0.5);
+  }
 
-  const handleMouseLeave = () => {
+  function handleMouseLeave() {
     mouseX.set(0);
     mouseY.set(0);
-  };
+  }
 
   return (
     <motion.div
@@ -40,198 +45,170 @@ const TiltCard = ({ children, className }) => {
       style={{ rotateX: springRotateX, rotateY: springRotateY, perspective: 1000 }}
       className={className}
     >
-      <div className="w-full h-full" style={{ transformStyle: "preserve-3d" }}>
+      <div className="h-full w-full" style={{ transformStyle: "preserve-3d" }}>
         {children}
       </div>
     </motion.div>
   );
-};
+}
 
-// --- Main Page ---
 export default function Home() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
-  const navigate = useNavigate();
-  
-  // Parallax Values - Optimized mapping
-  const yWork = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
-  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
+  const yWork = useTransform(scrollYProgress, [0, 1], ["-3%", "3%"]);
   const opacityHero = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  const navigate = useNavigate();
 
   return (
-    <div dir="rtl" className="bg-[#030309] text-white overflow-hidden selection:bg-fuchsia-600 selection:text-white font-sans">
-      <style>{`
-        * { font-family: 'IBM Plex Sans Arabic', sans-serif; }
-        .text-outline { -webkit-text-stroke: 1px rgba(255,255,255,0.2); color: transparent; }
-        .text-outline:hover { color: white; -webkit-text-stroke: 1px transparent; transition: 0.3s ease; }
-        .glow-shadow { box-shadow: 0 0 40px -10px var(--tw-shadow-color); }
-        .glass-panel { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        
-        /* Hardware accelerated marquee */
-        @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-scroll-fast {
-          animation: scroll 15s linear infinite;
-          will-change: transform;
-        }
-        /* Optimize images */
-        .will-change-transform { will-change: transform; }
-      `}</style>
+    <div dir="rtl" className="overflow-hidden bg-ink text-text">
+      <motion.div className="fixed inset-x-0 top-0 z-[100] h-1 origin-left bg-amber" style={{ scaleX }} aria-hidden="true" />
 
-      {/* Progress Bar */}
-      <motion.div className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-fuchsia-600 via-violet-600 to-cyan-500 z-[100] origin-left will-change-transform" style={{ scaleX }} />
-
-      {/* Static Optimized Background Instead of Heavy Animated Blurs */}
-      <div className="fixed inset-0 -z-20 bg-[#030309] pointer-events-none">
-         {/* Using pseudo elements or static gradients is much faster than animated blurs */}
-         <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-violet-900/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
-         <div className="absolute bottom-0 left-0 w-[50vw] h-[50vw] bg-cyan-900/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
+      <div className="pointer-events-none fixed inset-0 -z-20 overflow-hidden bg-ink">
+        <div className="absolute -right-[18vw] -top-[10vw] h-[42vw] w-[42vw] rounded-full bg-amber/10 blur-[110px]" />
+        <div className="absolute -bottom-[15vw] -left-[12vw] h-[38vw] w-[38vw] rounded-full bg-steel/10 blur-[110px]" />
       </div>
+      <div className="pointer-events-none fixed inset-0 -z-10 opacity-70 blueprint-grid" />
 
-      {/* Lightweight Grid Pattern */}
-      <div className="fixed inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
-
-      {/* 1. Ultra Hero Section - Optimized */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <motion.div style={{ y: yText, opacity: opacityHero }} className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-32 text-center flex flex-col items-center will-change-transform">
-          
-          <motion.div 
-            initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.6, ease: "easeOut" }}
-            className="inline-flex items-center gap-3 glass-panel px-6 py-2 rounded-full text-sm text-cyan-300 mb-8 shadow-sm"
-          >
-            <Sparkles className="w-4 h-4" />
-            وكالة برمجيات إبداعية حائزة على جوائز
+      <section className="relative flex min-h-[88vh] items-center overflow-hidden px-6 pb-20 pt-32 sm:px-8 lg:min-h-[92vh] lg:px-12 lg:pb-24">
+        <motion.div style={{ opacity: opacityHero }} className="mx-auto flex w-full max-w-7xl flex-col items-center text-center">
+          <motion.div initial={{ scale: 0.96, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }} className="glass-panel mb-7 inline-flex items-center gap-2.5 rounded-full px-4 py-2 text-xs font-semibold text-amber-2 sm:text-sm">
+            <Sparkles className="h-4 w-4" aria-hidden="true" />
+            شركة برمجيات وحلول رقمية في اليمن
           </motion.div>
 
-          <div className="mb-4">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1.1]">
-              نصمم <span className="text-outline">المستقبل</span>
-            </h1>
-          </div>
-          <div className="mb-8">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1.1]">
-              <span className="bg-gradient-to-r from-fuchsia-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">الرقمي</span> بحب
-            </h1>
+          <h1 className="max-w-5xl font-display text-5xl font-bold leading-[1.12] tracking-tight text-text sm:text-6xl lg:text-8xl">
+            نبني كيانات رقمية
+            <span className="text-gradient-amber block">تدوم وتنمو معك</span>
+          </h1>
+
+          <p className="mt-7 max-w-3xl text-base leading-8 text-muted sm:text-lg">
+            كيان سوفت تطوّر تطبيقات الجوال، منصات الويب، وأنظمة الشركات بعناية في التصميم والهندسة، من الفكرة الأولى حتى الإطلاق والتوسع.
+          </p>
+
+          <div className="mt-9 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
+            <MagneticButton onClick={() => navigate("/request")} className="btn-primary inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-7 text-sm sm:text-base">
+              ابدأ مشروعك
+              <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+            </MagneticButton>
+            <MagneticButton onClick={() => navigate("/portfolio")} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-line bg-surface/70 px-7 text-sm font-medium text-text transition hover:border-amber-dim hover:text-amber-2 sm:text-base">
+              استعرض أعمالنا
+            </MagneticButton>
           </div>
 
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-white/50 max-w-2xl leading-relaxed mb-10 font-light"
-          >
-            كيان سوفت شركة برمجة في اليمن وصنعاء، نطوّر تطبيقات الجوال، نصمم منصات الويب، ونبني أنظمة الشركات والمتاجر الرقمية من الفكرة حتى الإطلاق.
-          </motion.p>
-
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} className="flex gap-4">
-            <MagneticButton onClick={() => navigate("/portfolio")} className="bg-gradient-to-r from-fuchsia-600 to-violet-600 px-8 py-4 rounded-full font-bold text-base shadow-lg">
-              استكشف إبداعاتنا
-            </MagneticButton>
-            <MagneticButton onClick={() => navigate("/contact")} className="glass-panel px-8 py-4 rounded-full font-bold text-base hover:bg-white/10 transition-colors">
-              تواصل للإستشارة
-            </MagneticButton>
-          </motion.div>
+          <div className="mt-11 grid w-full max-w-4xl gap-3 sm:grid-cols-3">
+            {["تجربة استخدام مدروسة", "هندسة قابلة للتوسع", "دعم من الفكرة إلى الإطلاق"].map((item) => (
+              <div key={item} className="flex items-center justify-center gap-2 rounded-2xl border border-line bg-surface/55 px-4 py-3 text-xs font-medium text-muted sm:text-sm">
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-green" aria-hidden="true" />
+                {item}
+              </div>
+            ))}
+          </div>
         </motion.div>
       </section>
 
-      {/* Lightweight Scrolling Marquee using pure CSS */}
-      <div className="py-6 bg-white text-black -rotate-2 scale-110 flex overflow-hidden shadow-xl z-20 relative">
-        <div className="flex whitespace-nowrap gap-8 font-black text-3xl uppercase items-center animate-scroll-fast w-[200%]">
-           {Array(20).fill("DIGITAL EXCELLENCE • KAYAN SOFT • CREATIVE AGENCY • ").map((text, i) => <span key={i}>{text}</span>)}
+      <div className="relative z-10 overflow-hidden border-y border-line bg-surface/95 py-4">
+        <div className="flex w-max animate-scroll-fast items-center gap-8 whitespace-nowrap font-display text-xl font-bold text-amber-2 sm:text-2xl">
+          {Array.from({ length: 8 }, (_, i) => (
+            <React.Fragment key={i}>
+              <span>كيان سوفت</span><span className="text-muted">•</span><span>برمجة تطبيقات</span><span className="text-muted">•</span>
+              <span>منصات ويب</span><span className="text-muted">•</span><span>أنظمة شركات</span><span className="text-muted">•</span>
+            </React.Fragment>
+          ))}
         </div>
       </div>
 
-      {/* 2. Services - Optimized 3D Cards */}
-      <section className="py-32 px-6 relative z-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-20 md:flex justify-between items-end">
+      <section className="relative z-10 px-6 py-24 sm:px-8 lg:px-12 lg:py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 grid gap-8 lg:grid-cols-[1fr_0.7fr] lg:items-end">
             <div>
-              <h2 className="text-4xl md:text-6xl font-black mb-4 leading-tight">حلول <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">خارج الصندوق</span></h2>
+              <p className="mb-3 ltr-code text-xs text-amber">{"// services"}</p>
+              <h2 className="max-w-2xl font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+                حلول تقنية <span className="text-gradient-amber">تخدم العمل</span> قبل أن تخدم الشكل
+              </h2>
             </div>
-            <p className="max-w-md text-white/50 text-base leading-relaxed">
-              نصمم واجهات تأسر العين، ونبني أنظمة تتجاوز توقعات المستخدم، من الفكرة وحتى الإطلاق العالمي.
+            <p className="max-w-xl text-sm leading-8 text-muted sm:text-base">
+              نختار التقنية بما يخدم المنتج والعميل، ونبني تجربة متوازنة بين الجمال، الأداء، وسهولة الإدارة.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-6">
-            {[
-              { icon: <Smartphone className="w-8 h-8" />, title: "تطبيقات الهواتف الذكية", desc: "تجربة مستخدم تفاعلية فائقة السلاسة على منصات iOS و Android.", color: "from-fuchsia-500 to-rose-500", shadow: "shadow-fuchsia-500/20" },
-              { icon: <Monitor className="w-8 h-8" />, title: "منصات الويب المعقدة", desc: "تطبيقات ويب متقدمة (SPA) وأنظمة سحابية باستخدام أحدث أطر العمل.", color: "from-cyan-400 to-blue-600", shadow: "shadow-cyan-500/20" },
-              { icon: <Layers className="w-8 h-8" />, title: "أنظمة الإدارة (ERP)", desc: "تحول رقمي كامل لعمليات شركتك الداخلية لتوفير الوقت والجهد.", color: "from-violet-500 to-purple-700", shadow: "shadow-violet-500/20" }
-            ].map((srv, i) => (
-              <TiltCard key={i}>
-                <div className={`glass-panel rounded-3xl p-8 h-full relative overflow-hidden group glow-shadow ${srv.shadow} hover:bg-white/[0.04] transition-colors duration-300`}>
-                  {/* Subtle static gradient instead of heavy blur */}
-                  <div className={`absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-br ${srv.color} rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none`} />
-                  
-                  <div className="relative z-10" style={{ transform: "translateZ(20px)" }}>
-                    <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${srv.color} flex items-center justify-center mb-6 shadow-lg`}>
-                      {srv.icon}
+          <div className="grid gap-5 lg:grid-cols-3">
+            {SERVICES.map((service) => {
+              const Icon = service.icon;
+              return (
+                <TiltCard key={service.title} className="min-h-[270px]">
+                  <article className="group relative h-full overflow-hidden rounded-3xl border border-line bg-surface/90 p-7 transition duration-300 hover:border-amber-dim hover:bg-surface">
+                    <div className="absolute inset-x-0 top-0 h-px bg-amber/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    <div className="relative z-10">
+                      <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-amber-dim/40 bg-amber/10 text-amber-2">
+                        <Icon className="h-7 w-7" aria-hidden="true" />
+                      </div>
+                      <h3 className="font-display text-2xl font-bold text-text">{service.title}</h3>
+                      <p className="mt-3 text-sm leading-7 text-muted">{service.desc}</p>
                     </div>
-                    <h3 className="text-2xl font-black mb-3">{srv.title}</h3>
-                    <p className="text-white/60 text-base leading-relaxed">{srv.desc}</p>
+                  </article>
+                </TiltCard>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative z-10 border-y border-line bg-ink/80 px-6 py-24 sm:px-8 lg:px-12 lg:py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 text-center">
+            <p className="mb-3 ltr-code text-xs text-amber">{"// portfolio"}</p>
+            <h2 className="font-display text-4xl font-bold sm:text-5xl lg:text-6xl">
+              أعمال نصنعها <span className="text-gradient-amber">بفكر هندسي</span>
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-8 text-muted sm:text-base">
+              مجموعة من المنتجات والمنصات التي تمثل طريقتنا في الجمع بين التصميم، الهندسة، والنتيجة العملية.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-14">
+            {WORKS.map((work) => (
+              <motion.div key={work.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-10% 0px" }} transition={{ duration: 0.55 }} className={"group flex flex-col " + work.align}>
+                <div className="relative w-full overflow-hidden rounded-[2rem] border border-line bg-surface lg:w-[82%]">
+                  <div className="aspect-[16/10] overflow-hidden">
+                    <motion.img
+                      src={work.img}
+                      alt={work.title + " — مشروع من كيان سوفت"}
+                      loading="lazy"
+                      decoding="async"
+                      width="1200"
+                      height="750"
+                      style={{ y: yWork }}
+                      className="h-[112%] w-full object-cover object-center brightness-75 transition duration-700 group-hover:scale-[1.03] group-hover:brightness-100"
+                    />
                   </div>
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-70" />
                 </div>
-              </TiltCard>
+                <div className="mt-5 flex w-full flex-col gap-3 px-1 sm:flex-row sm:items-center sm:justify-between lg:w-[82%]">
+                  <div>
+                    <h3 className="font-display text-2xl font-bold sm:text-3xl">{work.title}</h3>
+                    <p className="mt-1 text-xs text-muted sm:text-sm">دراسة حالة / مشروع من كيان سوفت</p>
+                  </div>
+                  <span className="self-start rounded-full border border-line bg-surface px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-2 sm:self-auto">{work.cat}</span>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 3. Portfolio Parallax - Optimized Images */}
-      <section className="py-32 relative z-10 bg-[#020205]">
-        <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
-          <h2 className="text-5xl md:text-7xl font-black mb-4">
-            تحف <span className="text-outline">فنية</span>
-          </h2>
-          <p className="text-lg text-white/50">تصفح أحدث الجواهر التي صغناها لعملائنا.</p>
-        </div>
-
-        <div className="flex flex-col gap-16 px-6 max-w-6xl mx-auto">
-          {[
-            { img: "/projects/orbit-pay.webp", title: "تطبيق بنكي لامركزي", cat: "Fintech App", align: "items-start" },
-            { img: "/projects/hive-crm.webp", title: "نظام تحليلات ضخم", cat: "Big Data Dashboard", align: "items-end" },
-            { img: "/projects/atlas-menu.webp", title: "منصة تجارة إلكترونية", cat: "E-Commerce", align: "items-start" },
-          ].map((work, i) => (
-            <motion.div 
-              key={i} 
-              initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-10%" }} transition={{ duration: 0.6 }}
-              className={`flex flex-col ${work.align} group cursor-pointer`}
-            >
-              <div className="relative w-full lg:w-[80%] h-[400px] md:h-[500px] rounded-[2rem] overflow-hidden bg-white/5">
-                <motion.div className="w-full h-[120%] -top-[10%] will-change-transform" style={{ y: yWork }}>
-                  <img src={work.img} loading="lazy" decoding="async" width="1200" height="800" className="w-full h-full object-cover filter brightness-75 group-hover:brightness-100 transition-all duration-500" alt={`${work.title} — مشروع من كيان سوفت`} />
-                </motion.div>
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
-                  <div className="w-24 h-24 rounded-full bg-violet-600/90 flex items-center justify-center font-bold text-sm shadow-xl scale-75 group-hover:scale-100 transition-transform duration-300 ease-out">
-                    استكشف
-                  </div>
-                </div>
-              </div>
-              <div className="mt-6 px-2 flex justify-between items-center w-full lg:w-[80%]">
-                <h3 className="text-3xl md:text-4xl font-black">{work.title}</h3>
-                <span className="glass-panel px-4 py-1.5 rounded-full text-cyan-300 font-bold text-xs uppercase tracking-wider">{work.cat}</span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* 4. Epic CTA Footer */}
-      <section className="relative pt-32 pb-10 px-6 overflow-hidden min-h-[70vh] flex flex-col justify-between">
-        <div className="max-w-7xl mx-auto w-full relative z-10 text-center flex-1 flex flex-col justify-center items-center">
-          <motion.div initial={{ scale: 0.9, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <h2 className="text-5xl md:text-7xl font-black mb-6 leading-[1.1]">
-              مستعد <br/> <span className="text-outline hover:text-white transition-all duration-300">للإنطلاق؟</span>
-            </h2>
-          </motion.div>
-          <p className="text-lg text-white/60 mb-10 max-w-xl">لا تدع أفكارك العظيمة تنتظر. دعنا نبني لك المنصة التي ستقود سوقك وتذهل منافسيك.</p>
-          <MagneticButton onClick={() => navigate("/request")} className="bg-white text-black px-12 py-5 rounded-full font-black text-xl shadow-lg hover:scale-105 transition-transform duration-200">
-            ابدأ مشروعك الآن
+      <section className="relative z-10 px-6 py-24 sm:px-8 lg:px-12 lg:py-28">
+        <div className="mx-auto max-w-5xl overflow-hidden rounded-[2rem] border border-amber-dim/50 bg-surface p-8 text-center sm:p-12 lg:p-16">
+          <p className="ltr-code text-xs text-amber">{"// start"}</p>
+          <h2 className="mt-4 font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">لديك فكرة تستحق أن تُبنى؟</h2>
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-8 text-muted sm:text-base">
+            أخبرنا عن مشروعك، وسنحوّل الفكرة إلى منتج رقمي واضح وقابل للتنفيذ والتوسع.
+          </p>
+          <MagneticButton onClick={() => navigate("/request")} className="btn-primary mt-8 inline-flex min-h-13 items-center justify-center gap-2 rounded-full px-8 text-base">
+            اطلب مشروعك الآن
+            <ArrowLeft className="h-4 w-4" aria-hidden="true" />
           </MagneticButton>
         </div>
       </section>
-
     </div>
   );
 }
