@@ -16,7 +16,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto flex justify-between items-center bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-6 py-4 pointer-events-auto shadow-xl shadow-black/50">
         <Link to="/" className="flex items-center gap-3 group cursor-pointer">
           <div className="relative w-12 h-12 rounded-xl overflow-hidden shadow-lg shadow-cyan-500/20">
-            <img src="/logo.jpg" alt="Kayan Soft Logo" className="w-full h-full object-cover" />
+            <img src="/logo.webp" alt="Kayan Soft Logo" className="w-full h-full object-cover" />
           </div>
           <span className="font-black text-2xl tracking-tighter text-white">كيان سوفت</span>
         </Link>

@@ -1,17 +1,18 @@
 import { Routes, Route, useLocation } from "react-router-dom"
-import { useEffect } from "react"
+import { lazy, Suspense, useEffect } from "react"
 import { Analytics } from "@vercel/analytics/react"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 import FloatingWhatsApp from "./components/FloatingWhatsApp"
 import SEO from "./components/SEO"
-import Home from "./pages/Home"
-import Portfolio from "./pages/Portfolio"
-import ProjectDetail from "./pages/ProjectDetail"
-import Services from "./pages/Services"
-import About from "./pages/About"
-import Contact from "./pages/Contact"
-import RequestProject from "./pages/RequestProject"
+
+const Home = lazy(() => import("./pages/Home"))
+const Portfolio = lazy(() => import("./pages/Portfolio"))
+const ProjectDetail = lazy(() => import("./pages/ProjectDetail"))
+const Services = lazy(() => import("./pages/Services"))
+const About = lazy(() => import("./pages/About"))
+const Contact = lazy(() => import("./pages/Contact"))
+const RequestProject = lazy(() => import("./pages/RequestProject"))
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -41,16 +42,18 @@ export default function App() {
       <ScrollToTop />
       <Navbar />
       <main className="flex-1">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/portfolio/:id" element={<ProjectDetail />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/request" element={<RequestProject />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={<div className="min-h-[60vh] flex items-center justify-center bg-[#030309] text-white/60" role="status">جاري تحميل الصفحة…</div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/portfolio/:id" element={<ProjectDetail />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/request" element={<RequestProject />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </main>
       <Footer />
       {pathname !== "/request" && <FloatingWhatsApp />}

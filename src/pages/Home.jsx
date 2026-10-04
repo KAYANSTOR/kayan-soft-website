@@ -61,8 +61,7 @@ export default function Home() {
   return (
     <div dir="rtl" className="bg-[#030309] text-white overflow-hidden selection:bg-fuchsia-600 selection:text-white font-sans">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
-        * { font-family: 'Tajawal', 'Outfit', sans-serif; }
+        * { font-family: 'IBM Plex Sans Arabic', sans-serif; }
         .text-outline { -webkit-text-stroke: 1px rgba(255,255,255,0.2); color: transparent; }
         .text-outline:hover { color: white; -webkit-text-stroke: 1px transparent; transition: 0.3s ease; }
         .glow-shadow { box-shadow: 0 0 40px -10px var(--tw-shadow-color); }
@@ -190,9 +189,9 @@ export default function Home() {
 
         <div className="flex flex-col gap-16 px-6 max-w-6xl mx-auto">
           {[
-            { img: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?w=800&q=80", title: "تطبيق بنكي لامركزي", cat: "Fintech App", align: "items-start" },
-            { img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80", title: "نظام تحليلات ضخم", cat: "Big Data Dashboard", align: "items-end" },
-            { img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80", title: "منصة تجارة إلكترونية", cat: "E-Commerce", align: "items-start" },
+            { img: "/projects/orbit-pay.webp", title: "تطبيق بنكي لامركزي", cat: "Fintech App", align: "items-start" },
+            { img: "/projects/hive-crm.webp", title: "نظام تحليلات ضخم", cat: "Big Data Dashboard", align: "items-end" },
+            { img: "/projects/atlas-menu.webp", title: "منصة تجارة إلكترونية", cat: "E-Commerce", align: "items-start" },
           ].map((work, i) => (
             <motion.div 
               key={i} 
@@ -201,7 +200,7 @@ export default function Home() {
             >
               <div className="relative w-full lg:w-[80%] h-[400px] md:h-[500px] rounded-[2rem] overflow-hidden bg-white/5">
                 <motion.div className="w-full h-[120%] -top-[10%] will-change-transform" style={{ y: yWork }}>
-                  <img src={work.img} loading="lazy" className="w-full h-full object-cover filter brightness-75 group-hover:brightness-100 transition-all duration-500" alt={work.title} />
+                  <img src={work.img} loading="lazy" decoding="async" width="1200" height="800" className="w-full h-full object-cover filter brightness-75 group-hover:brightness-100 transition-all duration-500" alt={`${work.title} — مشروع من كيان سوفت`} />
                 </motion.div>
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
                   <div className="w-24 h-24 rounded-full bg-violet-600/90 flex items-center justify-center font-bold text-sm shadow-xl scale-75 group-hover:scale-100 transition-transform duration-300 ease-out">

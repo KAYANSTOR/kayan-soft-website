@@ -1,7 +1,6 @@
 import { useParams, Link, Navigate } from "react-router-dom"
 import { motion } from "framer-motion"
 import { ArrowRight, Calendar, Layers } from "lucide-react"
-import ProjectThumb from "../components/ProjectThumb"
 import ProjectCard from "../components/ProjectCard"
 import { getProjectById, projects } from "../data/projects"
 
@@ -43,7 +42,7 @@ export default function ProjectDetail() {
         transition={{ duration: 0.5, delay: 0.1 }}
         className="mt-10 rounded-2xl border border-line overflow-hidden bg-surface"
       >
-        <ProjectThumb color={project.thumbColor} shape={project.thumbShape} className="w-full h-64 md:h-80" />
+        <img src={project.image} alt={`${project.title} — دراسة حالة من كيان سوفت`} width="1200" height="800" fetchPriority="high" decoding="async" className="w-full h-64 md:h-80 object-cover" />
       </motion.div>
 
       <div className="grid md:grid-cols-3 gap-10 mt-12">

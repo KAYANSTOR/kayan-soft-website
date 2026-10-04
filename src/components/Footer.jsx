@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
         <Link to="/" className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-lg overflow-hidden shadow-lg">
-            <img src="/logo.jpg" alt="Kayan Soft Logo" className="w-full h-full object-cover" />
+            <img src="/logo.webp" alt="Kayan Soft Logo" className="w-full h-full object-cover" />
           </div>
           <span className="font-black text-lg">كيان سوفت</span>
         </Link>

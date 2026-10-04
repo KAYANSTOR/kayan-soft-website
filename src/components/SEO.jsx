@@ -4,7 +4,7 @@ import { getProjectById } from "../data/projects";
 
 export const SITE_URL = "https://ye.kayan-soft.online";
 export const SITE_NAME = "كيان سوفت | Kayan Soft";
-export const DEFAULT_IMAGE = `${SITE_URL}/logo.jpg`;
+export const DEFAULT_IMAGE = `${SITE_URL}/logo.webp`;
 
 const routeMetadata = {
   "/": {
