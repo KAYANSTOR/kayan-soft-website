@@ -1,0 +1,12 @@
+{
+  "routes": [
+    { "path": "/", "title": "الرئيسية | كيان سوفت" },
+    { "path": "/services", "title": "الخدمات | كيان سوفت" },
+    { "path": "/portfolio", "title": "الأعمال | كيان سوفت" },
+    { "path": "/portfolio/:id", "title": "دراسة حالة | كيان سوفت" },
+    { "path": "/about", "title": "من نحن | كيان سوفت" },
+    { "path": "/about-kayan-soft-yemen", "title": "كيان سوفت في اليمن" },
+    { "path": "/contact", "title": "تواصل معنا | كيان سوفت" },
+    { "path": "/request", "title": "اطلب مشروعك | كيان سوفت" }
+  ]
+}
