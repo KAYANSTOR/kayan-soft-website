@@ -2,7 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 const dist = new URL("../dist/", import.meta.url).pathname;
-const site = "https://ye.kayan-soft.online";
+const site = "https://kayan-soft.online";
 const pages = [
   ["services", "خدمات البرمجة وتطوير التطبيقات والمواقع | كيان سوفت", "خدمات كيان سوفت: تطوير تطبيقات iOS وAndroid، تصميم مواقع الويب، أنظمة CRM وERP، UI/UX، والاستشارات والدعم التقني.", "خدمات البرمجة، تطوير تطبيقات، تصميم مواقع اليمن، أنظمة CRM وERP"],
   ["portfolio", "أعمالنا ومشاريع البرمجة | معرض كيان سوفت", "استعرض نماذج من مشاريع كيان سوفت في تطبيقات الجوال، منصات الويب، التجارة الإلكترونية، والأنظمة الإدارية.", "أعمال شركة برمجة، مشاريع تطبيقات، مشاريع مواقع، معرض أعمال برمجي"],

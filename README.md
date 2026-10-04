@@ -1,6 +1,6 @@
 # كيان سوفت — Kayan Soft
 
-موقع الشركة (React + Vite + Tailwind CSS v4 + Framer Motion) على النطاق الإنتاجي: https://ye.kayan-soft.online
+موقع الشركة (React + Vite + Tailwind CSS v4 + Framer Motion) على النطاق الإنتاجي: https://kayan-soft.online
 
 ## SEO المطبق
 
@@ -13,8 +13,8 @@
 
 ## Google Search Console
 
-1. أضف النطاق `ye.kayan-soft.online` في Google Search Console.
-2. أرسل: `https://ye.kayan-soft.online/sitemap.xml`.
+1. أضف النطاق `kayan-soft.online` في Google Search Console.
+2. أرسل: `https://kayan-soft.online/sitemap.xml`.
 3. اطلب فحص الصفحة الرئيسية والصفحات الخدمية بعد النشر.
 4. أضف رابط الموقع في Google Business Profile إن كان للشركة ملف نشاط محلي.
 

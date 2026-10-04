@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { getProjectById } from "../data/projects";
 
-export const SITE_URL = "https://ye.kayan-soft.online";
+export const SITE_URL = "https://kayan-soft.online";
 export const SITE_NAME = "كيان سوفت | Kayan Soft";
 export const DEFAULT_IMAGE = `${SITE_URL}/logo.webp`;
 

@@ -8,5 +8,5 @@ Allow: /
 Disallow: /request
 Disallow: /api/
 
-Sitemap: https://ye.kayan-soft.online/sitemap.xml
-Host: https://ye.kayan-soft.online
+Sitemap: https://kayan-soft.online/sitemap.xml
+Host: https://kayan-soft.online
