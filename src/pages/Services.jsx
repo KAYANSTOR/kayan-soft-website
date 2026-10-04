@@ -6,19 +6,19 @@ const services = [
     icon: Smartphone,
     title: "تطبيقات جوال",
     desc: "تطبيقات iOS و Android أصلية أو متعددة المنصات، بتجربة مستخدم مذهلة من الفكرة حتى النشر على المتاجر.",
-    color: "from-fuchsia-500 to-rose-500"
+    color: "from-[#d6ff3f] to-[#ff6b4a]"
   },
   {
     icon: Globe,
     title: "مواقع ويب",
     desc: "مواقع تعريفية وتجارية فائقة السرعة، متجاوبة بالكامل، ومبنية لمحركات البحث باستخدام أحدث التقنيات.",
-    color: "from-cyan-400 to-blue-600"
+    color: "from-[#54e0a5] to-[#54e0a5]"
   },
   {
     icon: Server,
     title: "أنظمة مخصصة",
     desc: "أنظمة داخلية (CRM، مخزون، سحابية) تُبنى خصيصاً لتواكب طريقة عمل فريقك تحديداً بدقة متناهية.",
-    color: "from-violet-500 to-purple-700"
+    color: "from-[#ff6b4a] to-[#ff6b4a]"
   },
   {
     icon: Compass,
@@ -36,7 +36,7 @@ const services = [
     icon: LifeBuoy,
     title: "صيانة ودعم",
     desc: "متابعة مستمرة ما بعد الإطلاق: تحديثات أمنية، إصلاح أعطال، وتطوير ميزات جديدة تدريجياً بثقة.",
-    color: "from-blue-400 to-indigo-500"
+    color: "from-[#a4f7d5] to-[#ff6b4a]"
   },
 ];
 
@@ -52,15 +52,15 @@ export default function Services() {
     <div dir="rtl" className="min-h-screen pt-32 pb-24 px-6 relative overflow-hidden bg-[#030309] text-white">
       {/* Background Gradients */}
       <div className="fixed inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
-      <div className="absolute top-[20%] left-[10%] w-[40vw] h-[40vw] bg-fuchsia-900/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
+      <div className="absolute top-[20%] left-[10%] w-[40vw] h-[40vw] bg-[#1e2b0a]/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
       
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center mb-16">
-          <span className="inline-block glass-panel px-4 py-1.5 rounded-full text-fuchsia-400 text-sm font-bold tracking-widest uppercase mb-4 shadow-glow shadow-fuchsia-500/20">
+          <span className="inline-block glass-panel px-4 py-1.5 rounded-full text-[#d6ff3f] text-sm font-bold tracking-widest uppercase mb-4 shadow-glow shadow-[#d6ff3f]/20">
             ماذا نقدم
           </span>
           <h1 className="text-5xl md:text-7xl font-black mb-6">
-            خدماتنا <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-cyan-400">الرقمية</span>
+            خدماتنا <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d6ff3f] to-[#54e0a5]">الرقمية</span>
           </h1>
           <p className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed">
             نغطي دورة حياة المشروع البرمجي بالكامل، من رسم الفكرة المبدئية إلى التطوير المعقد وحتى الدعم الفني بعد الإطلاق المدوّي.
@@ -89,7 +89,7 @@ export default function Services() {
           className="mt-32"
         >
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black mb-4">آلية <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">العمل</span></h2>
+            <h2 className="text-4xl md:text-5xl font-black mb-4">آلية <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#54e0a5] to-[#54e0a5]">العمل</span></h2>
             <p className="text-white/50">خطوات واضحة ومدروسة لضمان نجاح مشروعك من الصفر.</p>
           </div>
           
@@ -98,9 +98,9 @@ export default function Services() {
               <motion.div
                 key={s.title}
                 initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="relative glass-panel rounded-3xl p-8 border-t-2 border-t-cyan-500/30"
+                className="relative glass-panel rounded-3xl p-8 border-t-2 border-t-[#54e0a5]/30"
               >
-                <div className="absolute -top-5 right-8 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-black text-xl w-10 h-10 rounded-full flex items-center justify-center shadow-lg shadow-cyan-500/30">
+                <div className="absolute -top-5 right-8 bg-gradient-to-r from-[#54e0a5] to-[#54e0a5] text-white font-black text-xl w-10 h-10 rounded-full flex items-center justify-center shadow-lg shadow-[#54e0a5]/30">
                   {i + 1}
                 </div>
                 <h3 className="font-black text-xl mt-4 mb-3">{s.title}</h3>

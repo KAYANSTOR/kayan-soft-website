@@ -18,15 +18,15 @@ export default function Portfolio() {
     <div dir="rtl" className="min-h-screen pt-32 pb-24 px-6 relative overflow-hidden bg-[#030309] text-white">
       {/* Background Gradients */}
       <div className="fixed inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
-      <div className="absolute top-0 left-[20%] w-[40vw] h-[40vw] bg-cyan-900/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
+      <div className="absolute top-0 left-[20%] w-[40vw] h-[40vw] bg-[#082d24]/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center mb-16">
-          <span className="inline-block glass-panel px-4 py-1.5 rounded-full text-cyan-400 text-sm font-bold tracking-widest uppercase mb-4 shadow-glow shadow-cyan-500/20">
+          <span className="inline-block glass-panel px-4 py-1.5 rounded-full text-[#54e0a5] text-sm font-bold tracking-widest uppercase mb-4 shadow-glow shadow-[#54e0a5]/20">
             أعمالنا
           </span>
           <h1 className="text-5xl md:text-7xl font-black mb-6">
-            تحف <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-400">فنية</span>
+            تحف <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#54e0a5] to-[#d6ff3f]">فنية</span>
           </h1>
           <p className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed">
             استكشف مجموعة من أبرز المشاريع التي قمنا بصياغتها بشغف لعملائنا في مختلف القطاعات.
@@ -44,7 +44,7 @@ export default function Portfolio() {
                 onClick={() => setActive(c.id)}
                 className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm transition-all duration-300 ${
                   isActive
-                    ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-glow shadow-cyan-500/30"
+                    ? "bg-gradient-to-r from-[#54e0a5] to-[#54e0a5] text-white shadow-glow shadow-[#54e0a5]/30"
                     : "glass-panel text-white/50 hover:text-white hover:bg-white/10"
                 }`}
               >
@@ -84,7 +84,7 @@ export default function Portfolio() {
                     
                     {/* Hover Overlay */}
                     <div className="absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-full bg-cyan-500 text-white flex items-center justify-center shadow-glow shadow-cyan-500/50 scale-50 group-hover:scale-100 transition-transform duration-500 delay-100">
+                      <div className="w-16 h-16 rounded-full bg-[#54e0a5] text-white flex items-center justify-center shadow-glow shadow-[#54e0a5]/50 scale-50 group-hover:scale-100 transition-transform duration-500 delay-100">
                         <ArrowUpRight size={24} />
                       </div>
                     </div>
@@ -92,8 +92,8 @@ export default function Portfolio() {
                   
                   <div className="px-2">
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-2xl font-black text-white group-hover:text-cyan-400 transition-colors">{p.title}</h3>
-                      <span className="text-xs font-bold uppercase tracking-wider text-fuchsia-400 bg-fuchsia-500/10 px-3 py-1 rounded-full">
+                      <h3 className="text-2xl font-black text-white group-hover:text-[#54e0a5] transition-colors">{p.title}</h3>
+                      <span className="text-xs font-bold uppercase tracking-wider text-[#d6ff3f] bg-[#d6ff3f]/10 px-3 py-1 rounded-full">
                         {categories.find(c => c.id === p.category)?.label || "مشاريع"}
                       </span>
                     </div>

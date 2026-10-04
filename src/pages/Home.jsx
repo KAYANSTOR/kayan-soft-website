@@ -59,7 +59,7 @@ export default function Home() {
   const opacityHero = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
   return (
-    <div dir="rtl" className="bg-[#030309] text-white overflow-hidden selection:bg-fuchsia-600 selection:text-white font-sans">
+    <div dir="rtl" className="bg-[#030309] text-white overflow-hidden selection:bg-[#d6ff3f] selection:text-white font-sans">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
         * { font-family: 'Tajawal', 'Outfit', sans-serif; }
@@ -82,13 +82,13 @@ export default function Home() {
       `}</style>
 
       {/* Progress Bar */}
-      <motion.div className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-fuchsia-600 via-violet-600 to-cyan-500 z-[100] origin-left will-change-transform" style={{ scaleX }} />
+      <motion.div className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#d6ff3f] via-[#ff6b4a] to-[#54e0a5] z-[100] origin-left will-change-transform" style={{ scaleX }} />
 
       {/* Static Optimized Background Instead of Heavy Animated Blurs */}
       <div className="fixed inset-0 -z-20 bg-[#030309] pointer-events-none">
          {/* Using pseudo elements or static gradients is much faster than animated blurs */}
-         <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-violet-900/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
-         <div className="absolute bottom-0 left-0 w-[50vw] h-[50vw] bg-cyan-900/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
+         <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-[#35150f]/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
+         <div className="absolute bottom-0 left-0 w-[50vw] h-[50vw] bg-[#082d24]/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
       </div>
 
       {/* Lightweight Grid Pattern */}
@@ -100,7 +100,7 @@ export default function Home() {
           
           <motion.div 
             initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.6, ease: "easeOut" }}
-            className="inline-flex items-center gap-3 glass-panel px-6 py-2 rounded-full text-sm text-cyan-300 mb-8 shadow-sm"
+            className="inline-flex items-center gap-3 glass-panel px-6 py-2 rounded-full text-sm text-[#a4f7d5] mb-8 shadow-sm"
           >
             <Sparkles className="w-4 h-4" />
             وكالة برمجيات إبداعية حائزة على جوائز
@@ -113,7 +113,7 @@ export default function Home() {
           </div>
           <div className="mb-8">
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1.1]">
-              <span className="bg-gradient-to-r from-fuchsia-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">الرقمي</span> بحب
+              <span className="bg-gradient-to-r from-[#d6ff3f] via-[#ff9a83] to-[#54e0a5] bg-clip-text text-transparent">الرقمي</span> بحب
             </h1>
           </div>
 
@@ -125,7 +125,7 @@ export default function Home() {
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} className="flex gap-4">
-            <MagneticButton onClick={() => navigate("/portfolio")} className="bg-gradient-to-r from-fuchsia-600 to-violet-600 px-8 py-4 rounded-full font-bold text-base shadow-lg">
+            <MagneticButton onClick={() => navigate("/portfolio")} className="bg-gradient-to-r from-[#d6ff3f] to-[#ff6b4a] px-8 py-4 rounded-full font-bold text-base shadow-lg">
               استكشف إبداعاتنا
             </MagneticButton>
             <MagneticButton onClick={() => navigate("/contact")} className="glass-panel px-8 py-4 rounded-full font-bold text-base hover:bg-white/10 transition-colors">
@@ -147,7 +147,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-20 md:flex justify-between items-end">
             <div>
-              <h2 className="text-4xl md:text-6xl font-black mb-4 leading-tight">حلول <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">خارج الصندوق</span></h2>
+              <h2 className="text-4xl md:text-6xl font-black mb-4 leading-tight">حلول <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#54e0a5] to-[#54e0a5]">خارج الصندوق</span></h2>
             </div>
             <p className="max-w-md text-white/50 text-base leading-relaxed">
               نصمم واجهات تأسر العين، ونبني أنظمة تتجاوز توقعات المستخدم، من الفكرة وحتى الإطلاق العالمي.
@@ -156,9 +156,9 @@ export default function Home() {
 
           <div className="grid lg:grid-cols-3 gap-6">
             {[
-              { icon: <Smartphone className="w-8 h-8" />, title: "تطبيقات الهواتف الذكية", desc: "تجربة مستخدم تفاعلية فائقة السلاسة على منصات iOS و Android.", color: "from-fuchsia-500 to-rose-500", shadow: "shadow-fuchsia-500/20" },
-              { icon: <Monitor className="w-8 h-8" />, title: "منصات الويب المعقدة", desc: "تطبيقات ويب متقدمة (SPA) وأنظمة سحابية باستخدام أحدث أطر العمل.", color: "from-cyan-400 to-blue-600", shadow: "shadow-cyan-500/20" },
-              { icon: <Layers className="w-8 h-8" />, title: "أنظمة الإدارة (ERP)", desc: "تحول رقمي كامل لعمليات شركتك الداخلية لتوفير الوقت والجهد.", color: "from-violet-500 to-purple-700", shadow: "shadow-violet-500/20" }
+              { icon: <Smartphone className="w-8 h-8" />, title: "تطبيقات الهواتف الذكية", desc: "تجربة مستخدم تفاعلية فائقة السلاسة على منصات iOS و Android.", color: "from-[#d6ff3f] to-[#ff6b4a]", shadow: "shadow-[#d6ff3f]/20" },
+              { icon: <Monitor className="w-8 h-8" />, title: "منصات الويب المعقدة", desc: "تطبيقات ويب متقدمة (SPA) وأنظمة سحابية باستخدام أحدث أطر العمل.", color: "from-[#54e0a5] to-[#54e0a5]", shadow: "shadow-[#54e0a5]/20" },
+              { icon: <Layers className="w-8 h-8" />, title: "أنظمة الإدارة (ERP)", desc: "تحول رقمي كامل لعمليات شركتك الداخلية لتوفير الوقت والجهد.", color: "from-[#ff6b4a] to-[#ff6b4a]", shadow: "shadow-[#ff6b4a]/20" }
             ].map((srv, i) => (
               <TiltCard key={i}>
                 <div className={`glass-panel rounded-3xl p-8 h-full relative overflow-hidden group glow-shadow ${srv.shadow} hover:bg-white/[0.04] transition-colors duration-300`}>
@@ -204,14 +204,14 @@ export default function Home() {
                   <img src={work.img} loading="lazy" className="w-full h-full object-cover filter brightness-75 group-hover:brightness-100 transition-all duration-500" alt={work.title} />
                 </motion.div>
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
-                  <div className="w-24 h-24 rounded-full bg-violet-600/90 flex items-center justify-center font-bold text-sm shadow-xl scale-75 group-hover:scale-100 transition-transform duration-300 ease-out">
+                  <div className="w-24 h-24 rounded-full bg-[#ff6b4a]/90 flex items-center justify-center font-bold text-sm shadow-xl scale-75 group-hover:scale-100 transition-transform duration-300 ease-out">
                     استكشف
                   </div>
                 </div>
               </div>
               <div className="mt-6 px-2 flex justify-between items-center w-full lg:w-[80%]">
                 <h3 className="text-3xl md:text-4xl font-black">{work.title}</h3>
-                <span className="glass-panel px-4 py-1.5 rounded-full text-cyan-300 font-bold text-xs uppercase tracking-wider">{work.cat}</span>
+                <span className="glass-panel px-4 py-1.5 rounded-full text-[#a4f7d5] font-bold text-xs uppercase tracking-wider">{work.cat}</span>
               </div>
             </motion.div>
           ))}

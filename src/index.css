@@ -5,18 +5,21 @@
   --font-body: "IBM Plex Sans Arabic", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
 
-  --color-ink: #0a0e14;
-  --color-surface: #121821;
-  --color-surface-2: #1a222e;
-  --color-line: #232c39;
-  --color-text: #e7ecf2;
-  --color-muted: #8b97a6;
-  --color-amber: #e8a33d;
-  --color-amber-2: #f5c563;
-  --color-amber-deep: #c97f1e;
-  --color-amber-dim: #a9762c;
-  --color-steel: #4f8ec2;
-  --color-green: #4fbf8b;
+  --color-ink: #080b09;
+  --color-surface: #111711;
+  --color-surface-2: #192319;
+  --color-line: #2b3a2d;
+  --color-text: #f4f1e8;
+  --color-muted: #9ba89c;
+  --color-amber: #d6ff3f;
+  --color-amber-2: #e7ff8a;
+  --color-amber-deep: #9ebd12;
+  --color-amber-dim: #6e8219;
+  --color-steel: #54e0a5;
+  --color-green: #ff6b4a;
+  --color-acid: #d6ff3f;
+  --color-coral: #ff6b4a;
+  --color-mint: #54e0a5;
 }
 
 html {
@@ -48,15 +51,15 @@ body {
 /* blueprint grid background */
 .blueprint-grid {
   background-image:
-    linear-gradient(to bottom, rgba(232, 163, 61, 0.06) 1px, transparent 1px),
-    linear-gradient(to right, rgba(232, 163, 61, 0.06) 1px, transparent 1px);
+    linear-gradient(to bottom, rgba(214, 255, 63, 0.06) 1px, transparent 1px),
+    linear-gradient(to right, rgba(214, 255, 63, 0.06) 1px, transparent 1px);
   background-size: 44px 44px;
 }
 
 .blueprint-grid-fine {
   background-image:
-    linear-gradient(to bottom, rgba(232, 163, 61, 0.045) 1px, transparent 1px),
-    linear-gradient(to right, rgba(232, 163, 61, 0.045) 1px, transparent 1px);
+    linear-gradient(to bottom, rgba(214, 255, 63, 0.045) 1px, transparent 1px),
+    linear-gradient(to right, rgba(214, 255, 63, 0.045) 1px, transparent 1px);
   background-size: 22px 22px;
 }
 
@@ -64,9 +67,9 @@ body {
   text-wrap: balance;
 }
 
-/* primary button: warm gold gradient, used for every core call-to-action site-wide */
+/* primary button: acid-to-coral signal gradient, used site-wide */
 .btn-primary {
-  background: linear-gradient(135deg, var(--color-amber-2) 0%, var(--color-amber) 55%, var(--color-amber-deep) 100%);
+  background: linear-gradient(135deg, var(--color-amber-2) 0%, var(--color-amber) 52%, var(--color-coral) 100%);
   color: var(--color-ink);
   font-weight: 500;
   transition: filter 0.2s ease, transform 0.2s ease;
@@ -75,14 +78,14 @@ body {
 .btn-primary:active { filter: brightness(0.95); transform: translateY(1px); }
 
 .text-gradient-amber {
-  background: linear-gradient(135deg, var(--color-amber-2) 0%, var(--color-amber) 60%, var(--color-amber-deep) 100%);
+  background: linear-gradient(135deg, var(--color-amber-2) 0%, var(--color-amber) 55%, var(--color-coral) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .glow-amber {
-  box-shadow: 0 0 0 1px rgba(232, 163, 61, 0.12), 0 30px 80px -30px rgba(232, 163, 61, 0.35);
+  box-shadow: 0 0 0 1px rgba(214, 255, 63, 0.14), 0 30px 80px -30px rgba(255, 107, 74, 0.3);
 }
 
 /* subtle film-grain texture for hero / feature panels */

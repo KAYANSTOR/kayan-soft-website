@@ -13,7 +13,7 @@ export default function KayanSoftYemen() {
     <div dir="rtl" className="min-h-screen pt-32 pb-24 px-6 bg-[#030309] text-white">
       <div className="max-w-4xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-          <p className="text-cyan-400 font-bold mb-4">الهوية الرسمية</p>
+          <p className="text-[#54e0a5] font-bold mb-4">الهوية الرسمية</p>
           <h1 className="text-4xl md:text-6xl font-black mb-8">كيان سوفت في اليمن</h1>
           <div className="space-y-5 text-lg leading-8 text-white/70">
             <p>كيان سوفت هي شركة برمجيات وتطوير حلول رقمية في اليمن. الموقع الرسمي للشركة هو <strong className="text-white">kayan-soft.online</strong>.</p>

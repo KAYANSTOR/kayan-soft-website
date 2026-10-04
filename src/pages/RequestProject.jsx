@@ -61,16 +61,16 @@ export default function RequestProject() {
     <div dir="rtl" className="min-h-screen pt-32 pb-24 px-6 relative overflow-hidden bg-[#030309] text-white">
       {/* Background Gradients */}
       <div className="fixed inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
-      <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-violet-900/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
-      <div className="absolute bottom-0 left-0 w-[50vw] h-[50vw] bg-cyan-900/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
+      <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-[#35150f]/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
+      <div className="absolute bottom-0 left-0 w-[50vw] h-[50vw] bg-[#082d24]/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
 
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut" }} className="text-center mb-12">
-          <span className="inline-block glass-panel px-4 py-1.5 rounded-full text-cyan-400 text-sm font-bold tracking-widest uppercase mb-6 shadow-glow shadow-cyan-500/20">
+          <span className="inline-block glass-panel px-4 py-1.5 rounded-full text-[#54e0a5] text-sm font-bold tracking-widest uppercase mb-6 shadow-glow shadow-[#54e0a5]/20">
             ابدأ رحلتك
           </span>
           <h1 className="text-5xl md:text-7xl font-black mb-6">
-            اطلب <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-cyan-400">مشروعك</span>
+            اطلب <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d6ff3f] to-[#54e0a5]">مشروعك</span>
           </h1>
           <p className="text-lg text-white/50 max-w-2xl mx-auto">
             عبّي التفاصيل، وبنجهزلك رسالة جاهزة تروح مباشرة لواتساب الشركة — نرجع لك خلال يوم عمل لننطلق نحو المستقبل.
@@ -85,7 +85,7 @@ export default function RequestProject() {
           {/* معلومات التواصل */}
           <div className="space-y-6">
             <h2 className="text-2xl font-bold flex items-center gap-3">
-              <span className="w-8 h-8 rounded-full bg-gradient-to-br from-fuchsia-600 to-cyan-500 flex items-center justify-center text-sm">1</span>
+              <span className="w-8 h-8 rounded-full bg-gradient-to-br from-[#d6ff3f] to-[#54e0a5] flex items-center justify-center text-sm">1</span>
               معلومات التواصل
             </h2>
             <div className="grid sm:grid-cols-2 gap-6">
@@ -94,18 +94,18 @@ export default function RequestProject() {
                 <input
                   value={name} onChange={(e) => setName(e.target.value)}
                   placeholder="محمد أحمد"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-cyan-400 focus:bg-white/10 transition-all"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#54e0a5] focus:bg-white/10 transition-all"
                 />
-                {errors.name && <p className="text-xs text-rose-400 mt-2">{errors.name}</p>}
+                {errors.name && <p className="text-xs text-[#ff9a83] mt-2">{errors.name}</p>}
               </div>
               <div>
                 <label className="text-sm text-white/60 mb-2 block font-medium">كيف نتواصل معك؟ (واتساب / إيميل)</label>
                 <input
                   value={contact} onChange={(e) => setContact(e.target.value)}
                   placeholder="+967 77X XXX XXX"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-cyan-400 focus:bg-white/10 transition-all"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#54e0a5] focus:bg-white/10 transition-all"
                 />
-                {errors.contact && <p className="text-xs text-rose-400 mt-2">{errors.contact}</p>}
+                {errors.contact && <p className="text-xs text-[#ff9a83] mt-2">{errors.contact}</p>}
               </div>
             </div>
           </div>
@@ -113,7 +113,7 @@ export default function RequestProject() {
           {/* نوع المشروع */}
           <div className="space-y-6">
             <h2 className="text-2xl font-bold flex items-center gap-3">
-              <span className="w-8 h-8 rounded-full bg-gradient-to-br from-fuchsia-600 to-cyan-500 flex items-center justify-center text-sm">2</span>
+              <span className="w-8 h-8 rounded-full bg-gradient-to-br from-[#d6ff3f] to-[#54e0a5] flex items-center justify-center text-sm">2</span>
               ما هو نوع المشروع؟
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -122,11 +122,11 @@ export default function RequestProject() {
                   key={id} type="button" onClick={() => toggleType(id)}
                   className={`flex flex-col items-center justify-center gap-3 p-6 rounded-2xl border transition-all duration-300 ${
                     types.includes(id)
-                      ? "bg-gradient-to-br from-fuchsia-600/20 to-cyan-600/20 border-cyan-400 shadow-glow shadow-cyan-500/20 text-white"
+                      ? "bg-gradient-to-br from-[#d6ff3f]/20 to-[#54e0a5]/20 border-[#54e0a5] shadow-glow shadow-[#54e0a5]/20 text-white"
                       : "bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/30"
                   }`}
                 >
-                  <Icon size={28} className={types.includes(id) ? "text-cyan-400" : ""} />
+                  <Icon size={28} className={types.includes(id) ? "text-[#54e0a5]" : ""} />
                   <span className="font-bold text-sm">{label}</span>
                 </button>
               ))}
@@ -136,7 +136,7 @@ export default function RequestProject() {
           {/* الميزانية والجدول الزمني */}
           <div className="space-y-6">
             <h2 className="text-2xl font-bold flex items-center gap-3">
-              <span className="w-8 h-8 rounded-full bg-gradient-to-br from-fuchsia-600 to-cyan-500 flex items-center justify-center text-sm">3</span>
+              <span className="w-8 h-8 rounded-full bg-gradient-to-br from-[#d6ff3f] to-[#54e0a5] flex items-center justify-center text-sm">3</span>
               الميزانية والجدول الزمني
             </h2>
             <div className="grid sm:grid-cols-2 gap-6">
@@ -144,7 +144,7 @@ export default function RequestProject() {
                 <label className="text-sm text-white/60 mb-2 block font-medium">الميزانية التقريبية</label>
                 <select
                   value={budget} onChange={(e) => setBudget(e.target.value)}
-                  className="w-full bg-black/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-cyan-400 transition-all appearance-none"
+                  className="w-full bg-black/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#54e0a5] transition-all appearance-none"
                 >
                   {budgetOptions.map((o) => <option key={o} value={o} className="bg-[#030309]">{o}</option>)}
                 </select>
@@ -153,7 +153,7 @@ export default function RequestProject() {
                 <label className="text-sm text-white/60 mb-2 block font-medium">الجدول الزمني</label>
                 <select
                   value={timeline} onChange={(e) => setTimeline(e.target.value)}
-                  className="w-full bg-black/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-cyan-400 transition-all appearance-none"
+                  className="w-full bg-black/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#54e0a5] transition-all appearance-none"
                 >
                   {timelineOptions.map((o) => <option key={o} value={o} className="bg-[#030309]">{o}</option>)}
                 </select>
@@ -164,7 +164,7 @@ export default function RequestProject() {
           {/* تفاصيل المشروع */}
           <div className="space-y-6">
             <h2 className="text-2xl font-bold flex items-center gap-3">
-              <span className="w-8 h-8 rounded-full bg-gradient-to-br from-fuchsia-600 to-cyan-500 flex items-center justify-center text-sm">4</span>
+              <span className="w-8 h-8 rounded-full bg-gradient-to-br from-[#d6ff3f] to-[#54e0a5] flex items-center justify-center text-sm">4</span>
               أخبرنا عن فكرتك العظيمة
             </h2>
             <div>
@@ -172,18 +172,18 @@ export default function RequestProject() {
                 value={details} onChange={(e) => setDetails(e.target.value)}
                 rows={6}
                 placeholder="صف لنا مشروعك، المشكلة التي يحلها، وأي روابط لتطبيقات مشابهة تعجبك..."
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-cyan-400 focus:bg-white/10 transition-all resize-none"
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#54e0a5] focus:bg-white/10 transition-all resize-none"
               />
-              {errors.details && <p className="text-xs text-rose-400 mt-2">{errors.details}</p>}
+              {errors.details && <p className="text-xs text-[#ff9a83] mt-2">{errors.details}</p>}
             </div>
           </div>
 
           <div className="pt-6 flex flex-col items-center gap-6 border-t border-white/10">
-            <MagneticButton type="submit" className="bg-gradient-to-r from-cyan-500 to-blue-600 px-12 py-5 rounded-full font-black text-xl shadow-glow shadow-cyan-500/30 text-white w-full sm:w-auto">
+            <MagneticButton type="submit" className="bg-gradient-to-r from-[#54e0a5] to-[#54e0a5] px-12 py-5 rounded-full font-black text-xl shadow-glow shadow-[#54e0a5]/30 text-white w-full sm:w-auto">
               إرسال الطلب عبر واتساب <Send className="w-6 h-6" />
             </MagneticButton>
             {opened && (
-              <motion.span initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-sm text-cyan-400 flex items-center gap-2 font-bold bg-cyan-900/20 px-6 py-2 rounded-full">
+              <motion.span initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-sm text-[#54e0a5] flex items-center gap-2 font-bold bg-[#082d24]/20 px-6 py-2 rounded-full">
                 <MessageCircle size={18} /> تم تحويلك لواتساب بنجاح! نحن بانتظار رسالتك.
               </motion.span>
             )}
@@ -192,7 +192,7 @@ export default function RequestProject() {
 
         <p className="text-white/40 text-center mt-12 font-medium">
           تفضل التواصل بطريقة أخرى؟{" "}
-          <Link to="/contact" className="text-cyan-400 hover:text-cyan-300 transition-colors border-b border-cyan-400/30 hover:border-cyan-300">
+          <Link to="/contact" className="text-[#54e0a5] hover:text-[#a4f7d5] transition-colors border-b border-[#54e0a5]/30 hover:border-[#a4f7d5]">
             قم بزيارة صفحة تواصل معنا
           </Link>
         </p>
