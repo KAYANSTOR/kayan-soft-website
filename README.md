@@ -1,92 +1,179 @@
 # كيان سوفت — Kayan Soft
+> موقع عربي باتجاه RTL لعرض خدمات كيان سوفت وأعمالها واستقبال طلبات المشاريع عبر واتساب.
 
-موقع الشركة (React + Vite + Tailwind CSS v4 + Framer Motion) على النطاق الإنتاجي: https://kayan-soft.online
+## 📖 نظرة عامة
 
-## SEO المطبق
+هذا المستودع يحتوي على واجهة الموقع العام لكيان سوفت، وليس خادماً أو لوحة إدارة.
+التطبيق مبني كواجهة React تعمل داخل المتصفح مع توجيه client-side عبر `react-router-dom`.
+نقطة الدخول هي `src/main.jsx`، وتربط `BrowserRouter` و`MotionConfig` بالمكوّن `App`.
+لغة صفحات HTML الافتراضية هي العربية واتجاهها من اليمين إلى اليسار في `index.html`.
 
-- عناوين ووصف وكلمات مفتاحية وcanonical وOpen Graph وTwitter Card لكل مسار.
-- بيانات منظمة Schema.org للمنظمة وBreadcrumbList.
-- `public/sitemap.xml` للمسارات العامة و`public/robots.txt` مع استبعاد نموذج الطلب.
-- إعادة كتابة Vercel للمسارات الداخلية حتى تعمل الزيارات المباشرة والروابط العميقة.
-- صفحة 404 واضحة بدلاً من soft-404.
-- Vercel Analytics مضمّن في التطبيق؛ يجب تفعيل Analytics من لوحة Vercel للمشروع.
+الصفحات المعرفة في التطبيق هي:
 
-## Google Search Console
+- الصفحة الرئيسية `/`.
+- الأعمال `/portfolio` وتفاصيل العمل `/portfolio/:id`.
+- الخدمات `/services`.
+- من نحن `/about`.
+- تواصل معنا `/contact`.
+- طلب مشروع `/request`.
+- صفحة الهوية الرسمية `/about-kayan-soft-yemen`.
+- صفحة 404 لمسارات React غير المعروفة، كما في `src/App.jsx`.
 
-1. أضف النطاق `kayan-soft.online` في Google Search Console.
-2. أرسل: `https://kayan-soft.online/sitemap.xml`.
-3. اطلب فحص الصفحة الرئيسية والصفحات الخدمية بعد النشر.
-4. أضف رابط الموقع في Google Business Profile إن كان للشركة ملف نشاط محلي.
+الموقع المعلن داخل ملفات SEO هو `https://kayan-soft.online` في `src/data/seo.js`.
 
-لا توجد طريقة مضمونة لجعل الموقع أول نتيجة؛ الترتيب يعتمد على المنافسة، جودة المحتوى، الروابط، الإشارات المحلية، وسرعة اكتشاف جوجل للموقع. لا تستخدم حشو الكلمات أو روابط مدفوعة مخالفة.
+## 🎯 المشكلة والحل
 
-## التشغيل محليًا
+- المشكلة الموصوفة في واجهة المنتج: يحتاج الزائر إلى معرفة الخدمات، استعراض نماذج الأعمال، ثم إرسال فكرة مشروع.
+  مصدر هذا التدفق هو الصفحات `src/pages/Services.jsx` و`src/pages/Portfolio.jsx` و`src/pages/RequestProject.jsx`.
+- الحل المنفذ: موقع عربي موحّد يوفر صفحات تعريفية، تصنيفاً للأعمال، صفحات تفاصيل، ونماذج تفتح رسالة واتساب جاهزة.
+  التنفيذ موزع بين `src/App.jsx` و`src/pages/Contact.jsx` و`src/pages/RequestProject.jsx`.
+- تفاصيل الجمهور التجاري أو متطلبات المنتج غير موثّقة في المستودع.
+- وجود خادم API أو تخزين طلبات في الخلفية غير موثّق في المستودع؛ النماذج تفتح واتساب مباشرة من المتصفح.
+
+## ✨ الميزات الرئيسية
+
+- ✅ واجهة عربية RTL مع ضبط `lang="ar"` و`dir="rtl"` في `index.html` و`src/components/SEO.jsx`.
+- ✅ توجيه لصفحات الموقع وصفحات تفاصيل المشاريع، مع تحميل كسول للصفحات بواسطة `lazy` و`Suspense` في `src/App.jsx`.
+- ✅ صفحة 404 داخل التطبيق، وتحويل معرّف المشروع غير المعروف إلى `/portfolio` في `src/pages/ProjectDetail.jsx`.
+- ✅ عرض الخدمات في ستة أقسام: تطبيقات جوال، مواقع ويب، أنظمة مخصصة، استشارات، UI/UX، وصيانة ودعم؛ المصدر `src/pages/Services.jsx`.
+- ✅ معرض أعمال بثلاثة تصنيفات قابلة للتصفية: تطبيقات جوال، مواقع ويب، وأنظمة وإدارة؛ المصدر `src/data/projects.js` و`src/pages/Portfolio.jsx`.
+- ✅ ستة سجلات مشاريع مع سنة وملخص ووصف وتقنيات وصورة، في `src/data/projects.js`.
+- ✅ صفحات ديناميكية للمشاريع تعرض الصورة والملخص والوصف والتقنيات ومشاريع مشابهة، في `src/pages/ProjectDetail.jsx` و`src/components/ProjectCard.jsx`.
+- ✅ نموذج تواصل يتحقق من الاسم والرسالة ثم يكوّن رسالة ويفتح رابط واتساب؛ التنفيذ في `src/pages/Contact.jsx`.
+- ✅ نموذج طلب مشروع يتحقق من الاسم ووسيلة التواصل والتفاصيل، ويجمع النوع والميزانية والجدول الزمني في رسالة واتساب؛ التنفيذ في `src/pages/RequestProject.jsx`.
+- ✅ زر واتساب عائم يظهر خارج مسار `/request`، عبر `src/App.jsx` و`src/components/FloatingWhatsApp.jsx`.
+- ✅ عنوان الصفحة ووسوم الوصف والكلمات وOpen Graph وTwitter وcanonical وJSON-LD تُحدّث حسب المسار في `src/components/SEO.jsx` و`src/data/seo.js`.
+- ✅ توليد HTML مسبق لمسارات SEO وصفحات المشاريع مع ملف 404 عند تنفيذ build، في `scripts/generate-seo-pages.mjs`.
+- ✅ `robots.txt` و`sitemap.xml` ثابتان، ويشيران إلى النطاق المعلن في `public/robots.txt` و`public/sitemap.xml`.
+- ✅ تحليلات Vercel مضافة إلى التطبيق في `src/App.jsx` عبر `@vercel/analytics/react`.
+- ✅ حركات انتقالية وتفاعلات hover وparallax وmagnetic buttons باستخدام `framer-motion` في `src/pages/Home.jsx` و`src/components/MagneticButton.jsx`.
+- ✅ دعم `prefers-reduced-motion` وfocus المرئي في `src/index.css`، مع `MotionConfig reducedMotion="user"` في `src/main.jsx`.
+
+## 🛠️ التقنيات
+
+| المجال | التقنية | دليلها |
+|---|---|---|
+| واجهة المستخدم | React 19 | `package.json` و`src/main.jsx` |
+| التوجيه | `react-router-dom` 7 | `package.json` و`src/App.jsx` |
+| البناء والتطوير | Vite 8 | `package.json` و`vite.config.js` |
+| CSS | Tailwind CSS 4 مع Vite plugin | `package.json` و`vite.config.js` و`src/index.css` |
+| الحركة | Framer Motion 13 | `package.json` وملفات `src/` |
+| الأيقونات | `lucide-react` | `package.json` وملفات الصفحات والمكوّنات |
+| التحليلات | `@vercel/analytics` | `package.json` و`src/App.jsx` |
+| التحقق البرمجي | Oxlint | `package.json` و`.oxlintrc.json` |
+| JavaScript modules | ESM عبر `"type": "module"` | `package.json` |
+| TypeScript | إعدادات TypeScript وملف UI واحد `.tsx` | `tsconfig.json` و`components/ui/button.tsx` |
+| إدارة الحزم | npm lockfile وpnpm lockfile | `package-lock.json` و`pnpm-lock.yaml` |
+| الخطوط | Google Fonts و`El Messiri` و`IBM Plex Sans Arabic` و`IBM Plex Mono` | `index.html` و`src/index.css` |
+
+لا توجد في manifest تقنية backend أو قاعدة بيانات أو إطار Next.js مستخدم كاعتماد تشغيل.
+القيم الموجودة في `components.json` و`tsconfig.json` لا تثبت تشغيل Next.js، و`next.config.*` غير موجود.
+
+## 🏗️ هيكل المشروع
+
+```text
+.
+├── package.json                 # scripts والاعتمادات
+├── package-lock.json            # قفل npm
+├── pnpm-lock.yaml               # قفل pnpm
+├── vite.config.js               # Vite وTailwind plugin
+├── tsconfig.json                # إعدادات TypeScript
+├── vercel.json                  # ترويسات التخزين والأمان
+├── index.html                   # القالب العربي وmetadata الأساسية
+├── public/
+│   ├── logo.jpg وlogo.webp      # أصول الهوية
+│   ├── projects/*.webp          # صور المشاريع الستة
+│   ├── robots.txt
+│   ├── sitemap.xml
+│   └── manus-routes.json
+├── scripts/
+│   └── generate-seo-pages.mjs   # صفحات HTML المسبقة و404
+├── src/
+│   ├── main.jsx وApp.jsx        # bootstrap والتوجيه
+│   ├── index.css                # theme وCSS العام
+│   ├── data/                    # المشاريع والتواصل وSEO
+│   ├── pages/                   # صفحات الموقع
+│   └── components/              # Navbar وFooter وSEO والنماذج والمكوّنات
+├── components/ui/button.tsx     # زر Base UI مع variants
+├── lib/utils.ts                 # cn وtailwind-merge
+├── components.json              # metadata لمكوّنات UI
+└── .oxlintrc.json               # قواعد Oxlint
+```
+
+لا توجد مجلدات `app/` أو `pages/` في الجذر؛ صفحات التطبيق الفعلية داخل `src/pages/`.
+
+## 🚀 التشغيل المحلي
+
+### المتطلبات المثبتة من المشروع
+
+- Node.js وnpm مطلوبان لتشغيل أوامر `package.json`؛ الإصدار المحدد غير موثّق في المستودع.
+- الاعتمادات مقفلة في `package-lock.json` و`pnpm-lock.yaml`.
+- ملف `.env.example` أو `.env.*.example` غير موجود.
+
+### الخطوات والأوامر
 
 ```bash
 npm install
 npm run dev
 ```
 
-يفتح على `http://localhost:5173`
+الأمر `npm install` استُخدم لتثبيت الاعتمادات من manifest وlockfile أثناء التحقق.
+الأمر `npm run dev` ينفذ script `vite` المعرفة في `package.json`.
+عنوان المضيف أو المنفذ المخصص غير موثّق في إعدادات المشروع؛ يستخدم Vite الإعداد الافتراضي عند غياب override.
 
-## البناء للإنتاج
+لإنشاء نسخة الإنتاج والتحقق من المصدر:
 
 ```bash
+npm run lint
 npm run build
 ```
 
-الناتج في مجلد `dist/`
+نتيجة التحقق في هذه المراجعة: `npm run lint` نجح دون warnings أو errors.
+ونجح `npm run build`، وبنى Vite الأصول ثم ولّد 13 مساراً وملف 404 وفق رسالة `generate-seo-pages.mjs`.
 
-## هيكل المشروع
+## 🔐 متغيرات البيئة
 
-```
-src/
-  data/projects.js         ← بيانات المشاريع (عدّل/أضف مشاريعك الحقيقية هنا)
-  components/               ← Navbar, Footer, ProjectCard, ProjectThumb, TypedCode, Logo, FloatingWhatsApp
-  components/icons/         ← أيقونات مخصصة (تطبيقات / مواقع / أنظمة)
-  pages/                     ← Home, Portfolio, ProjectDetail, Services, About, Contact, RequestProject
-```
+لم يعثر الفحص على `.env.example` أو أي ملف `.env.*.example`.
+لذلك لا توجد أسماء متغيرات بيئة يمكن مطابقتها، والغرض أو الإلزام غير موثّق في المستودع.
+القيم الثابتة لقنوات التواصل موجودة في المصدر وليست متغيرات بيئة؛ لا تُنقل إلى هذا README.
 
-## الهوية البصرية
+| الاسم | الغرض المثبت | مطلوب/اختياري |
+|---|---|---|
+| غير موثّق في المستودع | غير موثّق في المستودع | غير موثّق في المستودع |
 
-- **الشعار**: `src/components/Logo.jsx` — علامة مرسومة (SVG) بأسلوب "من الخط إلى الشكل القائم"، تتحرك مرة واحدة عند تحميل الصفحة في الشريط العلوي. لتغييرها، عدّل الإحداثيات داخل هذا الملف مباشرة (وحدّث `public/favicon.svg` بنفس الشكل يدويًا لأنه ملف SVG ثابت منفصل).
-- **الألوان والخطوط**: كل التوكِنز (الألوان، الخطوط، الظلال) معرّفة في `src/index.css` داخل `@theme`. غيّر القيم هناك وتنعكس على كل الموقع.
-- **الأيقونات**: `src/components/icons/ServiceIcons.jsx` يحتوي أيقونات مخصصة لتصنيفات (تطبيقات/مواقع/أنظمة)، وبقية الأيقونات من مكتبة `lucide-react`.
+## 📜 الأوامر المتاحة
 
-## ميزة "اطلب مشروعك"
+| الأمر | ما يفعله وفق التعريف/الملفات |
+|---|---|
+| `npm run dev` | يشغّل Vite للتطوير، وفق `scripts.dev` في `package.json`. |
+| `npm run build` | ينفذ `vite build` ثم `node scripts/generate-seo-pages.mjs`، وفق `scripts.build`. |
+| `npm run lint` | ينفذ `oxlint`، وفق `scripts.lint` و`.oxlintrc.json`. |
+| `npm run preview` | ينفذ `vite preview` لمعاينة مخرجات البناء، وفق `scripts.preview`. |
+| `npm install` | تثبيت اعتمادات `package.json`؛ لا يوجد له script داخل manifest، لكنه استُخدم للتحقق المحلي مع `package-lock.json`. |
 
-صفحة `/request` فورم مفصّل (نوع المشروع، الميزانية، الجدول الزمني، تفاصيل) يبني رسالة واتساب جاهزة ويفتحها تلقائيًا عند الإرسال — بدون أي سيرفر أو باك-إند. نفس الفكرة مطبّقة على فورم صفحة "تواصل معنا"، مع روابط مباشرة للبريد والهاتف وواتساب. بيانات الاتصال الموحدة موجودة في `src/data/contact.js`؛ لتغيير الرقم أو البريد، حدّث هذا الملف فقط.
+لا توجد scripts للاختبار أو النشر أو تشغيل backend في `package.json`.
 
-## استبدال الصور المؤقتة بصور حقيقية
+## 🌐 النشر
 
-حاليًا كل مشروع يعرض صورة مولّدة بـ SVG (component: `ProjectThumb`) بدل صورة حقيقية.
-لاستخدام صور فعلية:
+- إعداد Vercel موجود في `vercel.json`، ويعرّف ترويسات `sitemap.xml` و`robots.txt`، وترويسات عامة للأمان، وتخزيناً طويل الأجل للأصول الثابتة.
+- أمر build المخصص للنشر هو `npm run build` وفق `package.json`؛ مجلد الخرج `dist/` ناتج من Vite والسكربت اللاحق.
+- السكربت `scripts/generate-seo-pages.mjs` ينشئ HTML لمسارات metadata، وصفحات المشاريع، و`dist/404.html`.
+- النطاق المنشور المعلن داخل `src/data/seo.js` و`public/sitemap.xml` هو [kayan-soft.online](https://kayan-soft.online).
+- لا توجد ملفات GitHub Actions أو Docker أو `docker-compose.yml` أو إعداد Netlify/Firebase في المستودع.
+- روابط `vercel.app` و`netlify.app` و`firebaseapp.com` غير موجودة بنتيجة البحث المطلوب؛ رابط Demo منفصل غير موثّق في المستودع.
 
-1. ضع صور المشاريع داخل `public/projects/` (مثلاً `public/projects/orbit-pay.png`)
-2. في `src/data/projects.js` أضف حقل `image: "/projects/orbit-pay.png"` لكل مشروع
-3. في `ProjectCard.jsx` و `ProjectDetail.jsx` استبدل `<ProjectThumb .../>` بـ:
-   ```jsx
-   <img src={project.image} alt={project.title} className="w-full h-40 object-cover" />
-   ```
+## 🔒 الأمان
 
-## آلية التواصل
+- يضيف `vercel.json` الترويسة `X-Content-Type-Options: nosniff` و`Referrer-Policy: strict-origin-when-cross-origin`.
+- يمرر فتح واتساب عبر `target="_blank"` مع `rel="noopener noreferrer"` في `src/components/FloatingWhatsApp.jsx` و`src/pages/Contact.jsx`.
+- توجد حماية من بعض إدخالات HTML في توليد صفحات SEO عبر `escapeHtml` في `scripts/generate-seo-pages.mjs`.
+- توجد ترويسات cache للأصول، لكن لا توجد سياسة CSP أو HSTS موثقة في `vercel.json`.
+- نماذج التواصل لا تستخدم backend أو قاعدة بيانات؛ البيانات تُركب في URL واتساب داخل المتصفح، كما في `src/pages/Contact.jsx` و`src/pages/RequestProject.jsx`.
+- المصادقة والتفويض وRLS وFirestore rules وmiddleware غير موثقة في المستودع؛ لا توجد ملفات `api/` أو `functions/` أو `firestore.rules`.
+- لا توجد اختبارات أو إعداد اختبار معرّف في المشروع، ولذلك تغطية الأمان والاختبارات غير موثقة في المستودع.
+- لا تُستخدم متغيرات بيئة أو أسرار من ملفات example؛ ملفات الأسرار الحقيقية غير موجودة ضمن الفحص.
 
-نماذج التواصل لا تحتاج إلى باك-إند: عند الإرسال تُجهّز الرسالة وتفتح محادثة واتساب مباشرة، مع رابط احتياطي إذا منع المتصفح فتح نافذة جديدة. كما أن البريد والهاتف في صفحة `/contact` يعملان عبر `mailto:` و`tel:`. جميع القنوات تستخدم البيانات الموحدة في `src/data/contact.js`.
+## 📄 الترخيص
 
-## النشر على Vercel عبر GitHub
-
-1. أنشئ مستودع جديد على GitHub وارفع هذا المجلد إليه:
-   ```bash
-   git init
-   git add .
-   git commit -m "initial commit"
-   git branch -M main
-   git remote add origin https://github.com/USERNAME/kayan-soft.git
-   git push -u origin main
-   ```
-2. ادخل vercel.com → Add New Project → اختر المستودع من GitHub
-3. Vercel يكتشف Vite تلقائيًا (Build Command: npm run build, Output: dist) → اضغط Deploy
-4. من إعدادات المشروع في Vercel → Domains → أضف kayan-soft.online
-5. عدّل DNS عند مزود الدومين حسب القيم التي يعرضها Vercel (عادة A record أو CNAME)
-
-بعد هذه الخطوة، أي git push جديد على فرع main ينشر نسخة محدّثة من الموقع تلقائيًا.
+ملف `LICENSE` وملفات الترخيص البديلة غير موجودة في المستودع.
+نوع الترخيص وحقوق إعادة الاستخدام غير موثّق في المستودع.
